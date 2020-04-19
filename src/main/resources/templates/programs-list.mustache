@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Programs and tasks</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        .spoiler {
+            border: 1px solid #e0e0e0;
+            padding: 0 1em;
+        }
+        .spoiler details {
+            padding: 1em 0;
+        }
+        .spoiler details + details {
+            border-top: 1px solid #e0e0e0;
+        }
+        .spoiler summary {
+            color: #4d5895;
+        }
+        .spoiler details div {
+            overflow: hidden;
+            padding: 1em 1em 0;
+        }
+        .spoiler details[open] div {
+            animation: spoiler 1s;
+        }
+        @keyframes spoiler {
+            0%   {max-height: 0;}
+            100% {max-height: 10em;}
+        }
+    </style>
+</head>
+
+<body>
+<div>
+    <a href="\">HOME</a> | <a href="\users">USERS</a><br><br>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="submit" value="Sign Out" />
+    </form>
+
+         <div class="spoiler"><details>
+             <summary>Create new program</summary>
+         <form name="addnewpro" method="post" action="createProgram">
+             <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+             <br><b>Program type: </b>
+         <input type="radio" name="programType" value="prog1" checked>Type of program 1
+         <input type="radio" name="programType" value="prog2">Type of program 2
+         <input type="radio" name="programType" value="prog3">Type of program 3<br><br>
+             <b>Daily progress in percents:</b>
+         <input type="range" name="dailyProgress" min="0" max="100" /><br><br>
+             <b>Comment:</b><br><br>
+         <input type="text" name="comment" placeholder="Comment" required /><br><br>
+
+         <button type="submit">Add</button>
+             <button type="reset">Cancel</button>
+         </form>
+         </details>
+         </div><br>
+
+    <b>Programs List</b><br>
+<form name="programsfilter" method="post" action ="getProgramById">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+    <input type="text" name="pfilter" placeholder="Filter by program id..." />
+    <button type="submit">Find</button>
+</form><br>
+{{#programs}}
+    <div>
+        <b>ID: {{programId}}  </b>
+        <p>TYPE: {{programType}}  </p>
+        <p>PROGRESS: {{dailyProgress}}%  </p>
+        <p>COMMENT: {{comment}}  </p><br>
+    </div>
+{{/programs}}
+
+         <div class="spoiler">
+         <details>
+         <summary>Create new task</summary>
+
+         <form name = "addnewtas" method="post" action="createTask">
+             <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+             <br><b>Task text:</b><br><br>
+         <input type="text" name="taskText" placeholder="Task text" /><br><br>
+             <b>Task status: </b>
+         <input type="radio" name="status" value="1">Done
+         <input type="radio" name="status" value="0" checked>Not done<br><br>
+             <b>Task comment:</b><br><br>
+         <input type="text" name="comment" placeholder="Comment" required /><br><br>
+             <button type="submit">Add</button>
+             <button type="reset">Cancel</button>
+         </form>
+         </details>
+         </div><br>
+
+<b>Tasks List</b><br>
+<form name="tasksfilter" method="post" action ="getTaskById">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+    <input type="text" name="tfilter" placeholder="Filter by task id..." />
+    <button type="submit">Find</button>
+</form><br>
+{{#tasks}}
+    <div>
+        <b>ID: {{taskId}}  </b>
+        <p>TEXT: {{taskText}}  </p>
+        <p>STATUS: {{status}}  </p>
+        <p>COMMENT: {{comment}}  </p><br>
+    </div>
+{{/tasks}}
+</div>
+</body>
+</html>
