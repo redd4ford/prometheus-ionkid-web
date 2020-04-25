@@ -1,0 +1,110 @@
+<html>
+<head>
+    <title>User list</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        .spoiler {
+            border: 1px solid #e0e0e0;
+            padding: 0 1em;
+        }
+        .spoiler details {
+            padding: 1em 0;
+        }
+        .spoiler details + details {
+            border-top: 1px solid #e0e0e0;
+        }
+        .spoiler summary {
+            color: #4d5895;
+        }
+        .spoiler details div {
+            overflow: hidden;
+            padding: 1em 1em 0;
+        }
+        .spoiler details[open] div {
+            animation: spoiler 1s;
+        }
+        @keyframes spoiler {
+            0%   {max-height: 0;}
+            100% {max-height: 10em;}
+        }
+    </style>
+    <script type="text/javascript">
+        const logout = function () {
+            $.post("/logout", function () {
+                $("#user").html('');
+                $(".unauthenticated").show();
+                $(".authenticated").hide();
+            })
+            return true;
+        };
+    </script>
+    <script type="text/javascript">
+        $.ajaxSetup({
+            beforeSend : function(xhr, settings) {
+                if (settings.type == 'POST' || settings.type == 'PUT'
+                        || settings.type == 'DELETE') {
+                    if (!(/^http:.*/.test(settings.url) || /^https:.*/
+                            .test(settings.url))) {
+                        // Only send the token to relative URLs i.e. locally.
+                        xhr.setRequestHeader("X-XSRF-TOKEN",
+                                Cookies.get('XSRF-TOKEN'));
+                    }
+                }
+            }
+        });
+    </script>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
+</head>
+
+<body>
+    <div>
+        <a href="\">HOME</a> | <a href="\programslist">PROGRAMS</a><br><br>
+        <div class="container authenticated">
+            <button onClick="logout()" class="btn btn-primary">Logout</button>
+        </div>
+<br>
+   <b>Doctors List</b><br>
+{{#doctors}}
+    <div>
+        <b>ID: {{doctorId}}  |  NAME: {{name}}  </b>| PSSWRD: {{password}}<br>
+        <p>GENDER: {{gender}}  |   DOB: {{dateOfBirth}}</p>
+        <p>ORGANIZATION: {{organization}}  |  SPECIALTY: {{specialty}}</p>
+        <p>{{country}}, {{city}}</p>
+        <p>{{email}}</p>
+        <p>{{phoneNumber}}</p><br>
+    </div>
+{{/doctors}}
+<br>
+        <b>Parents List</b><br>
+{{#parents}}
+    <div>
+        <b>ID: {{parentId}}  |  USERNAME: {{username}} |  PSSWRD:  {{password}}</b>
+        <p>{{country}}, {{city}}</p>
+        <p>{{email}}</p>
+        <p>{{phoneNumber}}</p><br>
+       <br>
+    </div>
+{{/parents}}
+        <br>
+
+<b>Kids List</b><br>
+{{#kids}}
+    <div>
+        <b>ID: {{kidId}}  |  NAME: {{name}}  </b>
+        <p>GENDER: {{gender}}  </p>
+        <p>DIAGNOSE: {{diagnose}}  </p>
+        <p>COUNTRY: {{country}}  </p>
+        <p>CITY: {{city}}  </p>
+        <p>DOB: {{dateOfBirth}}  </p>
+        <p>WEIGHT: {{weight}}  </p>
+        <p>HEIGHT: {{height}}  </p>
+        <p>BLOODTYPE: {{bloodType}}  </p><br>
+    </div>
+{{/kids}}
+    </div>
+</body>
+
+</html>

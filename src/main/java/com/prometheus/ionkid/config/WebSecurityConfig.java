@@ -1,18 +1,21 @@
 package com.prometheus.ionkid.config;
 
 import com.prometheus.ionkid.business.UserService;
-import com.prometheus.ionkid.dataaccess.UserDetailsRepository;
+import com.prometheus.ionkid.dataaccess.UserRepository;
 import com.prometheus.ionkid.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.PrincipalExtractor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 import java.time.LocalDateTime;
 
@@ -26,32 +29,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http
-        .authorizeRequests()
-        .antMatchers("/", "/registration").permitAll()
-        .anyRequest().authenticated()
-        .and()
-        .logout()
-        .permitAll()
-        .and()
-        .formLogin().disable();
+        .authorizeRequests(a -> a
+            .antMatchers("/", "/error", "/webjars/**").permitAll()
+            .anyRequest().authenticated()
+        )
+        .logout(l -> l
+            .logoutSuccessUrl("/").permitAll()
+        )
+        .exceptionHandling(e -> e
+            .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
+        )
+        .csrf(c -> c
+            .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+        )
+        .oauth2Login();
     http
         .httpBasic().disable();
   }
 
-  @Override
-  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
-    auth.userDetailsService(userService)
-        .passwordEncoder(NoOpPasswordEncoder.getInstance());
-
-
-  }
-
   @Bean
-  public PrincipalExtractor principalExtractor(@Autowired UserDetailsRepository userDetailsRepository) {
+  public PrincipalExtractor principalExtractor(@Autowired UserRepository userRepository) {
     return map -> {
       String id = (String) map.get("sub");
-      User user = userDetailsRepository.findById(id).orElseGet(() -> {
+      User user = userRepository.findById(id).orElseGet(() -> {
         User newUser = new User();
         newUser.setId(id);
         newUser.setFirstName((String) map.get("given_name"));
@@ -65,7 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       });
 
       user.setLastVisit(LocalDateTime.now());
-      return userDetailsRepository.save(user);
+      return userRepository.save(user);
     };
   }
 

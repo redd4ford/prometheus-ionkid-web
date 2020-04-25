@@ -1,16 +1,17 @@
 package com.prometheus.ionkid.domain;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Map;
 import java.util.Set;
 
 @Entity
 @Table(name = "\"user\"")
-public class User implements UserDetails {
+public class User implements OAuth2User {
   @Id
   private String id;
   @Column
@@ -75,42 +76,12 @@ public class User implements UserDetails {
   }
 
   @Override
-  public Collection<? extends GrantedAuthority> getAuthorities() {
-    return getRoles();
-  }
-
-  @Override
-  public String getPassword() {
-    return null;
-  }
-
-  @Override
-  public String getUsername() {
-    return username;
+  public String getName() {
+    return this.firstName + " " + this.lastName;
   }
 
   public void setUsername(String username) {
     this.username = username;
-  }
-
-  @Override
-  public boolean isAccountNonExpired() {
-    return true;
-  }
-
-  @Override
-  public boolean isAccountNonLocked() {
-    return true;
-  }
-
-  @Override
-  public boolean isCredentialsNonExpired() {
-    return true;
-  }
-
-  @Override
-  public boolean isEnabled() {
-    return true;
   }
 
   public String getUserpic() {
@@ -160,4 +131,20 @@ public class User implements UserDetails {
   public void setRoles(Set<Role> roles) {
     this.roles = roles;
   }
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return getRoles();
+  }
+
+  @Override
+  public <A> A getAttribute(String name) {
+    return null;
+  }
+
+  @Override
+  public Map<String, Object> getAttributes() {
+    return null;
+  }
+
 }
