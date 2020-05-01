@@ -67,29 +67,30 @@
 <div>
     <a href="\">HOME</a> | <a href="\userslist">USERS</a><br><br>
     <div class="container authenticated">
-            <button onClick="logout()" class="btn btn-primary">Logout</button>
+        <button onClick="logout()" class="btn btn-primary">Logout</button>
     </div>
 
     <b>Programs List</b><br>
-{{#programs}}
-    <div>
-        <b>ID: {{programId}}  </b>
-        <p>TYPE: {{programType}}  </p>
-        <p>PROGRESS: {{dailyProgress}}%  </p>
-        <p>COMMENT: {{comment}}  </p><br>
-    </div>
-{{/programs}}
-<br>
+    {{#programs}}
+        <div>
+            <b>ID: {{id}}  </b>
+            <p>TYPE: {{description}}  </p>
+            <p>PROGRESS: {{progress}}%  </p>
+            <p>startdate: {{startDate}}  </p><br>
+            <p>enddate: {{endDate}}  </p><br>
 
-<b>Tasks List</b><br>
-{{#tasks}}
-    <div>
-        <b>ID: {{taskId}}  </b>
-        <p>TEXT: {{taskText}}  </p>
-        <p>STATUS: {{status}}  </p>
-        <p>COMMENT: {{comment}}  </p><br>
-    </div>
-{{/tasks}}
+        </div>
+    {{/programs}}
+    <br>
+
+    <b>Tasks List</b><br>
+    {{#tasks}}
+        <div>
+            <b>ID: {{id}}  </b>
+            <p>STATUS: {{status}}  </p>
+            <p>DESCRIPTION: {{description}}  </p><br>
+        </div>
+    {{/tasks}}
 </div>
 </body>
 </html>

@@ -1,7 +1,8 @@
 package com.prometheus.ionkid.business;
 
-import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 
 public abstract class AbstractService<T> {
   protected abstract JpaRepository<T, Integer> getRepository();

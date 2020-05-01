@@ -1,7 +1,7 @@
 package com.prometheus.ionkid.business;
 
 import com.prometheus.ionkid.dataaccess.AdminRepository;
-import com.prometheus.ionkid.domain.Admin;
+import com.prometheus.ionkid.rest.model.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;

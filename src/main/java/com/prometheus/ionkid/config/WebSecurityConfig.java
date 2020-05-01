@@ -1,36 +1,34 @@
 package com.prometheus.ionkid.config;
 
-import com.prometheus.ionkid.business.UserService;
 import com.prometheus.ionkid.dataaccess.UserRepository;
-import com.prometheus.ionkid.domain.User;
+import com.prometheus.ionkid.rest.model.Role;
+import com.prometheus.ionkid.rest.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.PrincipalExtractor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Configuration
 @EnableWebSecurity
 @EnableOAuth2Sso
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-  @Autowired
-  private UserService userService;
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http
         .authorizeRequests(a -> a
-            .antMatchers("/", "/error", "/webjars/**").permitAll()
+            .antMatchers("/", "/index", "/error", "/js/**", "/webjars/**").permitAll()
             .anyRequest().authenticated()
         )
         .logout(l -> l
@@ -50,22 +48,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   @Bean
   public PrincipalExtractor principalExtractor(@Autowired UserRepository userRepository) {
     return map -> {
-      String id = (String) map.get("sub");
-      User user = userRepository.findById(id).orElseGet(() -> {
-        User newUser = new User();
-        newUser.setId(id);
-        newUser.setFirstName((String) map.get("given_name"));
-        newUser.setLastName((String) map.get("family_name"));
-        newUser.setEmail((String) map.get("email"));
-        newUser.setGender((String) map.get("gender"));
-        newUser.setLocale((String) map.get("locale"));
-        newUser.setUserpic((String) map.get("picture"));
-
-        return newUser;
-      });
-
+      String id = (String) map.get("id");
+      User user = userRepository.findByGoogleId(id);
+      if (user == null) {
+        user = new User();
+        user.setGoogleId(id);
+        user.setFirstName((String) map.get("given_name"));
+        user.setLastName((String) map.get("family_name"));
+        user.setEmail((String) map.get("email"));
+        user.setGender((String) map.get("gender"));
+        user.setAvatarUrl((String) map.get("picture"));
+        //find a better way to set roles so that we don't have to create a new role for each user.
+        //maybe go for ENUM?
+        Set<Role> roles = new HashSet<>();
+        roles.add(new Role("ADMIN"));
+        user.setRoles(roles);
+      }
       user.setLastVisit(LocalDateTime.now());
-      return userRepository.save(user);
+      user.setActive(true);
+      userRepository.save(user);
+      return user;
     };
   }
 
