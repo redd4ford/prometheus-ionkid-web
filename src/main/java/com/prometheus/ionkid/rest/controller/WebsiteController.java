@@ -9,6 +9,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Collections;
 import java.util.Map;
@@ -25,6 +26,8 @@ public class WebsiteController {
   private KidService kidService;
   @Autowired
   private ParentService parentService;
+  @Autowired
+  private UserService userService;
 
   @GetMapping("/")
   public String main(Map<String, Object> model) {
@@ -32,7 +35,9 @@ public class WebsiteController {
   }
 
   @RequestMapping("/user")
+  @ResponseBody
   public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
+    userService.create(principal);
     return Collections.singletonMap("name", principal.getAttribute("name"));
   }
 
