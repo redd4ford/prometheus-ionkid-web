@@ -1,0 +1,9 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 583838208893-nkcg6llf72stmd0la8o93n4bohgbfch6.apps.googleusercontent.com
+            client-secret: ${clientSecret}
+# ...

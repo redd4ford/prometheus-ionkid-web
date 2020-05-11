@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<!--так виглядає сторінка localhost:8080/programs-->
+<html>
+<head>
+    <title>Programs and tasks</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--стиль для спойлерів (кнопка "створити нове ЩОСЬ")-->
+    <style>
+        .spoiler {
+            border: 1px solid #e0e0e0;
+            padding: 0 1em;
+        }
+        .spoiler details {
+            padding: 1em 0;
+        }
+        .spoiler details + details {
+            border-top: 1px solid #e0e0e0;
+        }
+        .spoiler summary {
+            color: #4d5895;
+        }
+        .spoiler details div {
+            overflow: hidden;
+            padding: 1em 1em 0;
+        }
+        .spoiler details[open] div {
+            animation: spoiler 1s;
+        }
+        @keyframes spoiler {
+            0%   {max-height: 0;}
+            100% {max-height: 10em;}
+        }
+    </style>
+    <script type="text/javascript">
+        const logout = function () {
+            $.post("/logout", function () {
+                $("#user").html('');
+                $(".unauthenticated").show();
+                $(".authenticated").hide();
+            })
+            return true;
+        };
+    </script>
+    <script type="text/javascript">
+        $.ajaxSetup({
+            beforeSend : function(xhr, settings) {
+                if (settings.type == 'POST' || settings.type == 'PUT'
+                        || settings.type == 'DELETE') {
+                    if (!(/^http:.*/.test(settings.url) || /^https:.*/
+                            .test(settings.url))) {
+                        // Only send the token to relative URLs i.e. locally.
+                        xhr.setRequestHeader("X-XSRF-TOKEN",
+                                Cookies.get('XSRF-TOKEN'));
+                    }
+                }
+            }
+        });
+    </script>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
+</head>
+
+<!--все, що виводиться на сторінці-->
+<body>
+<div>
+    <a href="\">HOME</a> | <a href="\userslist">USERS</a><br><br>
+    <div class="container authenticated">
+        <button onClick="logout()" class="btn btn-primary">Logout</button>
+    </div>
+
+    <b>Programs List</b><br>
+    {{#programs}}
+        <div>
+            <b>ID: {{id}}  </b>
+            <p>TYPE: {{description}}  </p>
+            <p>PROGRESS: {{progress}}%  </p>
+            <p>startdate: {{startDate}}  </p><br>
+            <p>enddate: {{endDate}}  </p><br>
+
+        </div>
+    {{/programs}}
+    <br>
+
+    <b>Tasks List</b><br>
+    {{#tasks}}
+        <div>
+            <b>ID: {{id}}  </b>
+            <p>STATUS: {{status}}  </p>
+            <p>DESCRIPTION: {{description}}  </p><br>
+        </div>
+    {{/tasks}}
+</div>
+</body>
+</html>
