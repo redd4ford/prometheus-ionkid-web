@@ -8,10 +8,7 @@ import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan({"com.prometheus.ionkid.dataaccess",
-    "com.prometheus.ionkid.business",
-    "com.prometheus.ionkid.rest.controller"
-})
+@ComponentScan({"com.prometheus.ionkid.*"})
 @EnableJpaRepositories({"com.prometheus.ionkid.dataaccess"})
 @EntityScan(
     basePackageClasses = {Application.class, Jsr310JpaConverters.class}
