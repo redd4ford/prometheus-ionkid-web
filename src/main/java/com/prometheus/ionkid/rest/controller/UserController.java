@@ -35,7 +35,7 @@ public class UserController {
   @PostMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
   public User createUser(final @RequestBody User user) {
     user.setId(userIdCounter.incrementAndGet());
-    userService.create(user);
+    userService.createNotOAuth2User(user);
 
     return user;
   }
