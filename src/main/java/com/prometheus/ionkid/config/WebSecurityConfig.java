@@ -46,11 +46,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   }
 
   @Bean
-  public PrincipalExtractor googlePrincipalExtractor() {
-    return new GooglePrincipalExtractor();
-  }
-
-  @Bean
   public AuthorizationRequestRepository<OAuth2AuthorizationRequest>
          authorizationRequestRepository() {
     return new HttpSessionOAuth2AuthorizationRequestRepository();
