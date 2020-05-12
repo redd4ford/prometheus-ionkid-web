@@ -2,6 +2,7 @@ package com.prometheus.ionkid.business;
 
 import com.prometheus.ionkid.dataaccess.UserRepository;
 import com.prometheus.ionkid.rest.model.Doctor;
+import com.prometheus.ionkid.rest.model.Role;
 import com.prometheus.ionkid.rest.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -12,6 +13,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -45,6 +47,7 @@ public class UserService implements UserDetailsService {
       user.setEmail(principal.getAttribute("email"));
       user.setGender(principal.getAttribute("gender"));
       user.setAvatarUrl(principal.getAttribute("picture"));
+      user.setRoles(Collections.singleton(Role.DOCTOR));
       Doctor doctor = new Doctor();
       doctor.setId(user.getId());
       doctorService.create(doctor);
