@@ -13,7 +13,7 @@ import java.util.*;
 @Table(name = "\"user\"")
 public class User implements UserDetails {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.TABLE)
   protected Integer id;
   @Column
   protected String googleId = null;
@@ -43,14 +43,9 @@ public class User implements UserDetails {
   protected LocalDateTime lastVisit;
   @Column
   protected Boolean active;
-
-  @ManyToMany(fetch = FetchType.EAGER)
-  @JoinTable(name = "users_roles",
-      joinColumns = {@JoinColumn(name = "user_id", nullable = false)},
-      inverseJoinColumns = {@JoinColumn(name = "role_id", nullable = true)})
-  @JsonIgnoreProperties("users")
+  @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+  @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
   private Set<Role> roles;
-
   @OneToMany(mappedBy = "user")
   private List<Comment> comments = new ArrayList<Comment>();
 
@@ -106,6 +101,11 @@ public class User implements UserDetails {
 
   public void setPhoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
+  }
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return getRoles();
   }
 
   @Override
@@ -198,12 +198,24 @@ public class User implements UserDetails {
     this.active = active;
   }
 
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
   public Set<Role> getRoles() {
     return roles;
   }
 
   public void setRoles(Set<Role> roles) {
     this.roles = roles;
+  }
+
+  public List<Comment> getComments() {
+    return comments;
+  }
+
+  public void setComments(List<Comment> comments) {
+    this.comments = comments;
   }
 
   @Override
@@ -224,11 +236,6 @@ public class User implements UserDetails {
   @Override
   public boolean isEnabled() {
     return getActive();
-  }
-
-  @Override
-  public Collection<? extends GrantedAuthority> getAuthorities() {
-    return getRoles();
   }
 
 }

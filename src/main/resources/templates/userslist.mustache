@@ -66,44 +66,20 @@
         <button onClick="logout()" class="btn btn-primary">Logout</button>
     </div>
     <br>
-    <b>Doctors List</b><br>
-    {{#doctors}}
+    <b>Users List</b><br>
+    {{#users}}
         <div>
-            <b>ID: {{id}}  |  NAME: {{firstName}} {{lastName}} </b>| PSSWRD: {{password}}<br>
-            <p>GENDER: {{gender}}  |   DOB: {{dateOfBirth}}</p>
-            <p>ORGANIZATION: {{organization}}  |  SPECIALTY: {{specialty}}</p>
-            <p>{{country}}, {{city}}</p>
-            <p>{{email}}</p>
-            <p>{{phoneNumber}}</p><br>
+            <b>ID: {{id}}  </b>
+            <p>Name:{{#firstName}} {{firstName}} {{/firstName}}     {{^firstName}} NA {{/firstName}}</p>
+            <p>EMAIL:{{#email}} {{email}} {{/email}}     {{^email}} NA {{/email}}</p>
+            <p>ROLE: {{roles}}</p>
+            <p>LAST VISIT: {{#lastVisit}} {{lastVisit}} {{/lastVisit}}     {{^lastVisit}} NA {{/lastVisit}}</p>
+
         </div>
-    {{/doctors}}
-    <br>
-    <b>Parents List</b><br>
-    {{#parents}}
-        <div>
-            <b>ID: {{id}}  |  USERNAME: {{username}} |  PSSWRD:  {{password}}</b>
-            <p>{{country}}, {{city}}</p>
-            <p>{{email}}</p>
-            <p>{{phoneNumber}}</p><br>
-            <br>
-        </div>
-    {{/parents}}
+    {{/users}}
     <br>
 
-    <b>Kids List</b><br>
-    {{#kids}}
-        <div>
-            <b>ID: {{id}}  |  NAME: {{firstName}}  </b>
-            <p>GENDER: {{gender}}  </p>
-            <p>DIAGNOSE: {{diagnose}}  </p>
-            <p>COUNTRY: {{country}}  </p>
-            <p>CITY: {{city}}  </p>
-            <p>DOB: {{dateOfBirth}}  </p>
-            <p>WEIGHT: {{weight}}  </p>
-            <p>HEIGHT: {{height}}  </p>
-            <p>BLOODTYPE: {{bloodType}}  </p><br>
-        </div>
-    {{/kids}}
+
 </div>
 </body>
 
