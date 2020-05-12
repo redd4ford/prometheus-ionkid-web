@@ -14,7 +14,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RequestMapping("/users")
 @RestController
 public class UserController {
-  private AtomicInteger userIdCounter = new AtomicInteger();
   @Autowired
   private UserService userService;
 
@@ -34,7 +33,6 @@ public class UserController {
 
   @PostMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
   public User createUser(final @RequestBody User user) {
-    user.setId(userIdCounter.incrementAndGet());
     userService.createNotOAuth2User(user);
 
     return user;
