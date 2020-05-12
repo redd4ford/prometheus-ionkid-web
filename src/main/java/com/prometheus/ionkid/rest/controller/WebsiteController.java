@@ -54,14 +54,8 @@ public class WebsiteController {
 
   @GetMapping("userslist")
   public String userslist(Map<String, Object> model) {
-    Iterable<Doctor> doctors = doctorService.getAll();
-    model.put("doctors", doctors);
-
-    Iterable<Parent> parents = parentService.getAll();
-    model.put("parents", parents);
-
-    Iterable<Kid> kids = kidService.getAll();
-    model.put("kids", kids);
+    Iterable<User> users = userService.getAll();
+    model.put("users", users);
 
     return "userslist";
   }
