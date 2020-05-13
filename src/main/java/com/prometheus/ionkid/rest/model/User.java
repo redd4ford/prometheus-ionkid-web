@@ -1,6 +1,5 @@
 package com.prometheus.ionkid.rest.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -138,6 +137,10 @@ public class User implements UserDetails {
     return username;
   }
 
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
   public void setUsername(String firstName, String lastName) {
     this.username = (firstName + lastName).toLowerCase();
   }
@@ -196,10 +199,6 @@ public class User implements UserDetails {
 
   public void setActive(Boolean active) {
     this.active = active;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
   }
 
   public Set<Role> getRoles() {
