@@ -1,14 +1,13 @@
 package com.prometheus.ionkid.business;
 
+import com.prometheus.ionkid.dataaccess.DoctorRepository;
 import com.prometheus.ionkid.dataaccess.UserRepository;
 import com.prometheus.ionkid.rest.model.Doctor;
 import com.prometheus.ionkid.rest.model.Role;
 import com.prometheus.ionkid.rest.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +20,7 @@ public class UserService implements UserDetailsService {
   @Autowired
   private UserRepository userRepository;
   @Autowired
-  private DoctorService doctorService;
+  private DoctorRepository doctorRepository;
 
   @Override
   public User loadUserByUsername(String googleId) {
@@ -36,25 +35,22 @@ public class UserService implements UserDetailsService {
     return userRepository.getOne(id);
   }
 
-  public void create(@AuthenticationPrincipal OAuth2User principal) {
-    String id = principal.getAttribute("sub");
-    User user = loadUserByUsername(id);
+  public void createOAuth2User(@AuthenticationPrincipal OAuth2User principal) {
+    String googleId = principal.getAttribute("sub");
+    User user = loadUserByUsername(googleId);
     if (user == null) {
-      user = new User();
-      user.setGoogleId(id);
+      user = new Doctor();
+      user.setGoogleId(googleId);
       user.setFirstName(principal.getAttribute("given_name"));
       user.setLastName(principal.getAttribute("family_name"));
       user.setEmail(principal.getAttribute("email"));
       user.setGender(principal.getAttribute("gender"));
       user.setAvatarUrl(principal.getAttribute("picture"));
       user.setRoles(Collections.singleton(Role.DOCTOR));
-      Doctor doctor = new Doctor();
-      doctor.setId(user.getId());
-      doctorService.create(doctor);
     }
-      user.setLastVisit(LocalDateTime.now());
-      user.setActive(true);
-      userRepository.save(user);
+    user.setLastVisit(LocalDateTime.now());
+    user.setActive(true);
+    userRepository.save(user);
   }
 
   public void createNotOAuth2User(User user) {
