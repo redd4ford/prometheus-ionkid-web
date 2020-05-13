@@ -1,10 +1,11 @@
 package com.prometheus.ionkid.rest.controller;
 
 import com.prometheus.ionkid.business.*;
-import com.prometheus.ionkid.rest.model.*;
+import com.prometheus.ionkid.rest.model.Program;
+import com.prometheus.ionkid.rest.model.Task;
+import com.prometheus.ionkid.rest.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +38,7 @@ public class WebsiteController {
   @RequestMapping("/user")
   @ResponseBody
   public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
-    userService.create(principal);
+    userService.createOAuth2User(principal);
     return Collections.singletonMap("name", principal.getAttribute("name"));
   }
 
