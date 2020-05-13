@@ -57,6 +57,7 @@
                 $("#user").html('');
                 $(".unauthenticated").show();
                 $(".authenticated").hide();
+                window.location = '/';
             });
             return true;
         };
@@ -67,9 +68,7 @@
 <body>
 <div>
     <a href="\">HOME</a> | <a href="\userslist">USERS</a><br><br>
-    <div class="container authenticated">
         <button onClick="logout()" class="btn btn-primary">Logout</button>
-    </div>
 
     <b>Programs List</b><br>
     {{#programs}}
