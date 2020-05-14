@@ -31,10 +31,11 @@
             100% {max-height: 10em;}
         }
     </style>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $.ajaxSetup({
             beforeSend : function(xhr, settings) {
@@ -61,36 +62,35 @@
             });
             return true;
         };
+        var goToHome = function() {
+            window.location = '/';
+        };
     </script>
 </head>
 
 <!--все, що виводиться на сторінці-->
 <body>
 <div>
-    <a href="\">HOME</a> | <a href="\userslist">USERS</a><br><br>
-        <button onClick="logout()" class="btn btn-primary">Logout</button>
+    <button onclick="goToHome()" class="btn btn-info">IONKiD</button>   <a href="/userslist">USERS</a><br><br>
+    <button onClick="logout()" class="btn btn-primary">Logout</button>
 
-    <b>Programs List</b><br>
+    <br><b>Programs List</b><br>
     {{#programs}}
         <div>
             <b>ID: {{id}}  </b>
             <p>TYPE: {{description}}  </p>
             <p>PROGRESS: {{progress}}%  </p>
-            <p>startdate: {{startDate}}  </p><br>
-            <p>enddate: {{endDate}}  </p><br>
-
+            <p>startdate: {{startDate}}  </p>
+            <p>enddate: {{endDate}}  </p>
+            <p>TASKS:
+            {{#tasks}}
+            <p><b>   ID: {{id}}  </b></p>
+            <p>   STATUS: {{status}}  </p>
+            <p>   DESCRIPTION: {{description}}  </p>
+            {{/tasks}} {{^tasks}} NA {{/tasks}}  </p><br>
+    {{/programs}} {{^programs}} NA {{/programs}}
         </div>
-    {{/programs}}
     <br>
-
-    <b>Tasks List</b><br>
-    {{#tasks}}
-        <div>
-            <b>ID: {{id}}  </b>
-            <p>STATUS: {{status}}  </p>
-            <p>DESCRIPTION: {{description}}  </p><br>
-        </div>
-    {{/tasks}}
 </div>
 </body>
 </html>
