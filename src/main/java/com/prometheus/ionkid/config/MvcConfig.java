@@ -1,6 +1,8 @@
 package com.prometheus.ionkid.config;
 
+import com.prometheus.ionkid.util.RedirectInterceptor;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -14,4 +16,8 @@ public class MvcConfig implements WebMvcConfigurer {
     registry.addViewController("/programslist").setViewName("login");
   }
 
+  @Override
+  public void addInterceptors(InterceptorRegistry registry) {
+    registry.addInterceptor(new RedirectInterceptor());
+  }
 }
