@@ -1,9 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+    body {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://c4.wallpaperflare.com/wallpaper/1/889/181/doctor-office-wallpaper-preview.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+
+    }
+    #signin{
+        position: absolute;
+        right: 290px;
+        top: 50px;
+        font-family: "Lato Regular", Arial;
+        cursor:pointer;
+        color:#ffffff;
+    }
+
+    #signup{
+        position: absolute;
+        right: 150px;
+        top: 50px;
+        font-family: "Lato Regular", Arial;
+        cursor:pointer;
+        color:#ffffff;
+    }
+
+    #experience {
+        position: absolute;
+        left: 400px;
+        bottom: 140px;
+        background-color: #27373fED;
+        color:#ffffff;
+        font-size:300%;
+        font-family: "Lato Regular", Arial;
+        padding-right: 0.2em;
+        padding-left: 0.3em;
+    }
+    div.matters {
+        background-color: white;
+        color: black;
+        font-size:300%;
+        position: absolute;
+        left: 880px;
+        bottom: 140px;
+        mix-blend-mode: screen;
+        padding-left: 0.1em;
+        padding-right: 0.3em;
+        font-family: "Lato Regular", Arial;
+    }
+    div.providing{
+        text-align: right;
+        margin-top: 440px;
+        margin-right: 215px;
+        font-size: 30px;
+        color: white;
+        font-family: "Lato Regular", Arial;
+    }
+    div.logo{
+        left: 150px;
+        top: 100px;
+        font-size:500%;
+        font-family: Blippo, sans-serif ;
+        color: #50c3b0;
+        position: absolute;
+
+    }
+
+
+</style>
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>Home page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width"/>
     <base href="/"/>
@@ -12,9 +81,11 @@
     <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript"  src='http://cdn.renderedfont.com/js/renderedfont-0.8.min.js#free'></script>
     <script type="text/javascript">
         $.ajaxSetup({
-            beforeSend : function(xhr, settings) {
+            beforeSend: function (xhr, settings) {
                 if (settings.type == 'POST' || settings.type == 'PUT'
                         || settings.type == 'DELETE') {
                     if (!(/^http:.*/.test(settings.url) || /^https:.*/
@@ -24,13 +95,13 @@
                 }
             }
         });
-        $.get("/user", function(data) {
+        $.get("/user", function (data) {
             $("#user").html(data.name);
             $(".unauthenticated").hide();
             $(".authenticated").show();
         });
-        var logout = function() {
-            $.post("/logout", function() {
+        var logout = function () {
+            $.post("/logout", function () {
                 $("#user").html('');
                 $(".unauthenticated").show();
                 $(".authenticated").hide();
@@ -39,19 +110,23 @@
         };
     </script>
 </head>
-<body>
 <div class="container unauthenticated">
-    Login with Google to proceed: <a href="/oauth2/authorization/google">click here</a>
+    <a id="signin" href="/oauth2/authorization/google" class="btn btn-info btn-lg" role="button"><b><div style="color:white">SIGN IN</div></b></a>
+    <a id="signup" href="#" class="btn btn-info btn-lg" role="button"><b><div style="color:white">SIGN UP</div></b></a>
+    <b id="experience" class = "font-weight-bolder">YOUR EXPERIENCE</b>
+    <div class="matters font-weight-bolder">MATTERS</div>
+    <div class="providing"><b>providing a workplace for doctors<br>specializing in developmental disorders</b></div>
+    <div class="logo font-weight-bolder">IONKID</div>
 </div>
 <div class="container authenticated" style="display:none">
-    Hello, <span class="authenticated" id="user"></span>!
-    <div class="container">
-        <a href="\userslist">USERS</a> | <a href="\programslist">PROGRAMS</a>
-    </div>
-    <div class = "container">
-        <button onClick="logout()" class="btn btn-primary">Logout</button>
-    </div>
-</div>
+        Hello, <span class="authenticated" id="user"></span>!
+        <div class="container">
+            <a href="\userslist">USERS</a> | <a href="\programslist">PROGRAMS</a>
+        </div>
+        <div class="container">
+            <button onClick="logout()" class="btn btn-primary">Logout</button>
+        </div>
 
+    </div>
 </body>
 </html>
