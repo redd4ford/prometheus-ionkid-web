@@ -7,14 +7,15 @@
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width"/>
     <base href="/"/>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
+    <script defer
+            src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $.ajaxSetup({
-            beforeSend : function(xhr, settings) {
+            beforeSend: function (xhr, settings) {
                 if (settings.type == 'POST' || settings.type == 'PUT'
                         || settings.type == 'DELETE') {
                     if (!(/^http:.*/.test(settings.url) || /^https:.*/
@@ -24,13 +25,13 @@
                 }
             }
         });
-        $.get("/user", function(data) {
+        $.get("/user", function (data) {
             $("#user").html(data.name);
             $(".unauthenticated").hide();
             $(".authenticated").show();
         });
-        var logout = function() {
-            $.post("/logout", function() {
+        var logout = function () {
+            $.post("/logout", function () {
                 $("#user").html('');
                 $(".unauthenticated").show();
                 $(".authenticated").hide();
@@ -42,13 +43,14 @@
 <body>
 <div class="container unauthenticated">
     Login with Google to proceed: <a href="/oauth2/authorization/google">click here</a>
+    <br>Or sign up on IONKiD: <a href="/registration">click here</a>
 </div>
 <div class="container authenticated" style="display:none">
     Hello, <span class="authenticated" id="user"></span>!
     <div class="container">
-        <a href="\userslist">USERS</a> | <a href="\programslist">PROGRAMS</a>
+        <a href="/userslist">USERS</a> | <a href="/programslist">PROGRAMS</a>
     </div>
-    <div class = "container">
+    <div class="container">
         <button onClick="logout()" class="btn btn-primary">Logout</button>
     </div>
 </div>
