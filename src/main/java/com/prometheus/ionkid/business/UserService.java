@@ -70,4 +70,9 @@ public class UserService implements UserDetailsService {
       userRepository.deleteById(id);
     }
   }
+
+  public User loadByEmail(String email) {
+    return userRepository.findByEmail(email);
+  }
+
 }
