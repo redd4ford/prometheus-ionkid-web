@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -22,7 +21,7 @@ public class Parent extends User {
 
   public Parent(String googleId, String email, String phoneNumber, String password, String firstName,
                 String lastName, String avatarUrl, String gender, String country, String city,
-                Date dateOfBirth, LocalDateTime lastVisit, Boolean active) {
+                String dateOfBirth, LocalDateTime lastVisit, Boolean active) {
     super(googleId, email, phoneNumber, password, firstName, lastName, avatarUrl, gender, country,
         city, dateOfBirth, lastVisit, active);
   }

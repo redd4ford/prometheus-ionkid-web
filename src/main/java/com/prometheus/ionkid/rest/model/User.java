@@ -5,7 +5,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
@@ -37,7 +40,7 @@ public class User implements UserDetails {
   @Column
   protected String city;
   @Column
-  protected Date dateOfBirth;
+  protected String dateOfBirth;
   @Column
   protected LocalDateTime lastVisit;
   @Column
@@ -60,7 +63,7 @@ public class User implements UserDetails {
 
   public User(String googleId, String email, String phoneNumber, String password, String firstName,
               String lastName, String avatarUrl, String gender, String country, String city,
-              Date dateOfBirth, LocalDateTime lastVisit, Boolean active) {
+              String dateOfBirth, LocalDateTime lastVisit, Boolean active) {
     this.googleId = googleId;
     this.email = email;
     this.phoneNumber = phoneNumber;
@@ -184,11 +187,11 @@ public class User implements UserDetails {
     this.city = city;
   }
 
-  public Date getDateOfBirth() {
+  public String getDateOfBirth() {
     return dateOfBirth;
   }
 
-  public void setDateOfBirth(Date dateOfBirth) {
+  public void setDateOfBirth(String dateOfBirth) {
     this.dateOfBirth = dateOfBirth;
   }
 
