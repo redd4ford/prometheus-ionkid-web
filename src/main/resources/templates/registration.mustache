@@ -1,22 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Spring Security Example </title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Home page</title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <base href="/registration"/>
+    <title>Registration</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
+    <script type="text/javascript">
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (settings.type == 'POST' || settings.type == 'PUT' || settings.type == 'DELETE') {
+                    if (!(/^http:.*/.test(settings.url) || /^https:.*/
+                            .test(settings.url))) {
+                        xhr.setRequestHeader("X-XSRF-TOKEN", Cookies.get('XSRF-TOKEN'));
+                    }
+                }
+            }
+        });
+    </script>
 </head>
 <body>
-Add new Admin(user)
+<div class="container">
+Add new doctor
 {{#message}}
     {{message}}
 {{/message}}
-<div id="param.error">
-    Invalid username and password.
-</div>
-<div id="param.logout">
-    You have been logged out.
-</div>
-<form action="/registration" method="post">
-    <div><label> User Name: <input type="text" name="username"/> </label></div>
-    <div><label> Password: <input type="password" name="password"/> </label></div>
+<form action="registration" method="post">
+    <div>Email: <label>
+        <input type="email" name="email"/>
+    </label></div>
+    <div>Password: <label>
+        <input type="password" name="password"/>
+    </label></div>
     <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-    <div><input type="submit" value="Sign In"/></div>
+    <div><input type="submit" value="Sign Up"/></div>
 </form>
+</div>
 </body>
 </html>
