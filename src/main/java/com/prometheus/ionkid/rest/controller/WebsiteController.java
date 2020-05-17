@@ -22,16 +22,10 @@ public class WebsiteController {
   @Autowired
   private TaskService taskService;
   @Autowired
-  private DoctorService doctorService;
-  @Autowired
-  private KidService kidService;
-  @Autowired
-  private ParentService parentService;
-  @Autowired
   private UserService userService;
 
   @GetMapping("/")
-  public String main(Map<String, Object> model) {
+  public String main() {
     return "index";
   }
 
