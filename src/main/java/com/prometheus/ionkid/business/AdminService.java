@@ -16,4 +16,8 @@ public class AdminService extends AbstractService<Admin> {
     return adminRepository;
   }
 
+  public Admin loadByEmail(String email) {
+    return adminRepository.findByEmail(email);
+  }
+
 }
