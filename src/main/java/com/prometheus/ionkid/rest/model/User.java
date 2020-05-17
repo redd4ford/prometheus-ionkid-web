@@ -44,11 +44,18 @@ public class User implements UserDetails {
   protected Boolean active;
   @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
   @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+  @Enumerated(EnumType.STRING)
   private Set<Role> roles;
   @OneToMany(mappedBy = "user")
   private List<Comment> comments = new ArrayList<Comment>();
 
   public User() {
+  }
+
+  public User(String email, String password, Boolean active) {
+    this.email = email;
+    this.password = password;
+    this.active = active;
   }
 
   public User(String googleId, String email, String phoneNumber, String password, String firstName,
