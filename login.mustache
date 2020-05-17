@@ -1,0 +1,151 @@
+<head>
+    <title>Spring Security Example </title>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <style>
+    .titleH{
+  background-color:black;
+  display: inline;
+  padding-left:90px;
+  padding-right:20px;
+  font-family:"Helvetica";
+  color: #e3ecf2;
+  font-size: 3em;
+  width: 90%;
+  }
+  .title{
+  display: inline;
+  max-width:90%;
+  padding-left:10px;
+  padding-right:70%;
+  font-family:"Helvetica";
+  color: #1b262c;
+  font-size: 3em;
+  }
+  
+  .container1 {
+  width: 100vw;
+  padding-right: 0px;
+  padding-left: 0px;
+  padding-bottom: 0px;
+  position: relative;
+        top: 550px;
+}
+.a1{
+    padding-left: 400px;
+}
+ul li{
+  display: inline;
+}
+.together{
+  display: inline;  
+}
+ .form-group{
+   max-width:66%;
+   padding-left:470px;
+   padding-right:100px;
+   padding-top:40px;
+   padding-bottom:0px;
+ 
+ }
+ .BTHP{
+   border-bottom: 1px solid #141E30;
+   color: rgba(255, 255, 255, 0.5);
+   padding-left:10px;
+   padding-right:30px;
+   padding-top:10px;
+   padding-bottom:10px;
+   width: 100%;
+ }
+ .form-control{
+   padding-left:10px;
+   padding-right:30px;
+   padding-top:10px;
+   padding-bottom:10px;
+ }
+ .buttonS {
+   max-width:100%;
+   padding-left:570px;
+   padding-right:30px;
+   padding-top:10px;
+   padding-bottom:10px;
+ }
+ .googleB{
+   padding-left:630px;
+   padding-right:30px;
+   padding-top:0px;
+   padding-bottom:0px;
+   color:black;
+ }   
+.text-center{
+    
+ }
+ .text-down{
+   padding-left:10px;
+   padding-top:28px;
+   color: #dde5ed
+ }
+body {
+  /* Old browsers */
+  background: #eef8ff;
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: #eef8ff;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #eef8ff;
+  left: 150px;
+  top: 50px;
+  }
+    </style>
+ <h1 class="titleH">SIGN </h1>
+ <h1 class="title">IN</h1>
+ <div class="BTHP">
+ <button type="button" class="btn btn-outline-dark">BACK TO HOME PAGE </button>
+ </div>
+
+<form action="/login" method="post">
+    
+  <div class="form-group mx-sm-3 mb-2">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email..." name="email">
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password..." name="pswd">
+    </div>
+    <div class="googleB">
+    <a href="#" class="btn-google m-b-10">
+<img src="data:image/png" alt="SIGN UP WITH GOOGLE">
+    </a>
+    </div>
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+    <div class="buttonS">
+    <button type="submit" class="btn btn-dark btn-lg" value="Sign In" >SUBMIT</button>
+    </div>
+    <p class="text-center"> I do not have an account. Sign me up!</p>
+    <p class="text-center"> I do not remember my password.</p>
+</form>
+<!--<a href="/registration"> Add new Admin(user)</a> -->
+<div class="container1 p-3 my-3 bg-dark text-white container-fluid">
+    <ul class="breadcrumb together" style="background-color: #353a40">
+    <li class="breadcrumb-item"> <a href="#"><b style="color:white">ABOUT US</b></a></li>
+    <li class="breadcrumb-item"> <a href="#"><b style="color:white">BLOGS</b></a></li>
+    <li class="breadcrumb-item"> <a href="#"><b style="color:white">AFFILIATE PROGRAMS</b></a></li> 
+    <li class="breadcrumb-item"> <a href="#"><b style="color:white">SUPPORT</b></a></li>
+    </ul>
+    <ul class ="together">
+    <li class="breadcrumb-item"><a class="a1" href="#"><b style="color:white">TERMS OF USE </b></a></li>
+    <li class="breadcrumb-item"><a href="#"><b style="color:white">PRIVACY POLICY </b></a></li>
+    </ul>
+    <p class="text-down">Copyright © 2019-2020 | Prometheus, Lviv IoT. All rights reserved </p>
+</div>
+
+</body>
+</html>
