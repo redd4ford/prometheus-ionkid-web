@@ -34,6 +34,12 @@ public class Doctor extends User {
     this.specialty = specialty;
   }
 
+  public Doctor(String email, String password, boolean active) {
+    this.email = email;
+    this.password = password;
+    this.active = active;
+  }
+
   public String getCertificationId() {
     return certificationId;
   }
