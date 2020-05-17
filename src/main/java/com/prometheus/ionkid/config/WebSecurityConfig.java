@@ -2,7 +2,6 @@ package com.prometheus.ionkid.config;
 
 import com.prometheus.ionkid.business.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,16 +14,16 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.oauth2.client.web.AuthorizationRequestRepository;
 import org.springframework.security.oauth2.client.web.HttpSessionOAuth2AuthorizationRequestRepository;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @Configuration
 @EnableWebSecurity
-@EnableOAuth2Sso
 @EnableOAuth2Client
+@EnableAuthorizationServer
 @Order(2)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   @Autowired
@@ -32,7 +31,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    SimpleUrlAuthenticationFailureHandler handler = new SimpleUrlAuthenticationFailureHandler("/");
     http
         .authorizeRequests(a -> a
             .antMatchers("/", "/registration**", "/login**", "/error", "/js/**", "/webjars/**").permitAll()
@@ -46,6 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         )
         .csrf(c -> c
             .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+            .disable()
         )
         .oauth2Login(o -> o
             .authorizationEndpoint()
@@ -75,6 +74,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   authorizationRequestRepository() {
     return new HttpSessionOAuth2AuthorizationRequestRepository();
   }
+
 
   @Bean
   public RequestCacheOAuth2ClientContextFilter requestCacheOAuth2ClientContextFilter() {
