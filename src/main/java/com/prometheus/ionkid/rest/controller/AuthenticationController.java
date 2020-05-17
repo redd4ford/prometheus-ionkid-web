@@ -2,20 +2,15 @@ package com.prometheus.ionkid.rest.controller;
 
 import com.prometheus.ionkid.business.UserService;
 import com.prometheus.ionkid.rest.model.Doctor;
-import com.prometheus.ionkid.rest.model.Role;
 import com.prometheus.ionkid.rest.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
-import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.Map;
-
-import static java.net.URLEncoder.encode;
 
 @Controller
 public class AuthenticationController {
@@ -28,38 +23,39 @@ public class AuthenticationController {
   }
 
   @PostMapping("/registration")
-  public String addUser(User user, Map<String, Object> model) throws UnsupportedEncodingException {
-    User userFromDb = userService.loadByEmail(user.getEmail());
-    if (userFromDb != null) {
-      model.put("message", "Doctor exists!");
+  public String addUser(@RequestParam String email, @RequestParam String password,
+                        @RequestParam String firstName, @RequestParam String lastName,
+                        @RequestParam String gender, @RequestParam String dateOfBirth,
+                        @RequestParam String country, @RequestParam String city,
+                        @RequestParam String organization, @RequestParam String specialty,
+                        Map<String, Object> model) {
+    User user = userService.loadUserByUsername(email);
+    if (user != null) {
+      if (userService.isOAuth2User(user)) {
+        model.put("message", "Someone registered this account by OAuth2.");
+      } else {
+        model.put("message", "Doctor exists!");
+      }
       return "registration";
     }
-
-    user = new Doctor(user.getEmail(), user.getPassword(), false);
-    user.setRoles(Collections.singleton(Role.DOCTOR));
+    user = new Doctor();
+    user.setEmail(email);
+    user.setPassword(password);
+    user.setFirstName(firstName);
+    user.setLastName(lastName);
+    user.setGender(gender);
+    user.setDateOfBirth(dateOfBirth);
+    user.setCountry(country);
+    user.setCity(city);
+    ((Doctor) user).setOrganization(organization);
+    ((Doctor) user).setSpecialty(specialty);
     userService.createNotOAuth2User(user);
 
-    return encode("login", StandardCharsets.UTF_8);
+    return "redirect:/login";
   }
 
   @RequestMapping("/login")
-  public String login() throws NullPointerException {
-
-//    return encode("/", StandardCharsets.UTF_8);
+  public String login() {
     return "login";
-  }
-
-  @PutMapping("/login/success")
-  public String loginSuccess(@AuthenticationPrincipal User user, Map<String, Object> model) {
-    User userFromDb = userService.loadByEmail(user.getEmail());
-    if (userFromDb == null) {
-      model.put("message", "There is no such user!");
-      login();
-    } else {
-      userFromDb.setActive(true);
-      userFromDb.setLastVisit(LocalDateTime.now());
-      userService.update(userFromDb.getId(), userFromDb);
-    }
-    return "redirect:/";
   }
 }
