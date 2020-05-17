@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>Home page</title>
     <meta name="description" content=""/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <base href="/registration"/>
     <title>Registration</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
+    <script defer
+            src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
     <script type="text/javascript">
@@ -28,20 +29,43 @@
 </head>
 <body>
 <div class="container">
-Add new doctor
-{{#message}}
-    {{message}}
-{{/message}}
-<form action="registration" method="post">
-    <div>Email: <label>
-        <input type="email" name="email"/>
-    </label></div>
-    <div>Password: <label>
-        <input type="password" name="password"/>
-    </label></div>
-    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-    <div><input type="submit" value="Sign Up"/></div>
-</form>
+    Add new doctor
+    <br>
+    {{#message}}
+        {{message}}
+    {{/message}}
+    <form action="registration" method="post">
+        Email: <label>
+        <input type="email" name="email" required placeholder="Enter your email..."/>
+    </label><br><br>
+        Password: <label>
+        <input type="password" name="password" required placeholder="Enter your password..."/>
+    </label><br><br>
+        Name:
+        <label><input type="text" name="firstName" required placeholder="Enter your first name..."/></label>
+        <label><input type="text" name="lastName" required placeholder="Enter your last name..."/></label><br><br>
+        Gender:
+        <label><input type="radio" name="gender" value="Male">Male
+        <input type="radio" name="gender" value="Female">Female
+        <input type="radio" name="gender" value="Non-binary" checked>Non-binary
+    </label><br><br>
+        Date of birth:
+        <label><input type="date" name="dateOfBirth" required
+               placeholder="Choose your date of birth..."/></label><br><br>
+        Country:
+        <label><input type="text" name="country" required placeholder="Enter your country..."/></label><br><br>
+        City:
+        <label><input type="text" name="city" required placeholder="Enter your city..."/></label><br><br>
+        Organization:
+        <label><input type="text" name="organization" required placeholder="Organization"/></label><br><br>
+        Specialty:
+        <label><input type="text" name="specialty" required placeholder="Specialty"/></label><br><br>
+
+        <div>
+            <button type="submit">Sign up</button>
+            <button type="reset">Cancel</button>
+        </div>
+    </form>
 </div>
 </body>
 </html>
