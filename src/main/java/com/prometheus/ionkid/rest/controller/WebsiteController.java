@@ -1,6 +1,8 @@
 package com.prometheus.ionkid.rest.controller;
 
-import com.prometheus.ionkid.business.*;
+import com.prometheus.ionkid.business.ProgramService;
+import com.prometheus.ionkid.business.TaskService;
+import com.prometheus.ionkid.business.UserService;
 import com.prometheus.ionkid.rest.model.Program;
 import com.prometheus.ionkid.rest.model.Task;
 import com.prometheus.ionkid.rest.model.User;
@@ -22,26 +24,27 @@ public class WebsiteController {
   @Autowired
   private TaskService taskService;
   @Autowired
-  private DoctorService doctorService;
-  @Autowired
-  private KidService kidService;
-  @Autowired
-  private ParentService parentService;
-  @Autowired
   private UserService userService;
 
   @GetMapping("/")
-  public String main(Map<String, Object> model) {
+  public String main() {
     return "index";
   }
 
   @RequestMapping("/user")
   @ResponseBody
-  public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
-    userService.createOAuth2User(principal);
-    return Collections.singletonMap("name", principal.getAttribute("name"));
+  public Map<String, Object> user(@AuthenticationPrincipal Object user) {
+    if (user instanceof OAuth2User) {
+      userService.createOAuth2User((OAuth2User) user);
+      return Collections.singletonMap("name", ((OAuth2User) user).getAttribute("name"));
+    } else if (user instanceof User) {
+      userService.updateLastVisit((User) user);
+      return Collections.singletonMap("name", (((User) user).getFirstName() + " " + ((User) user).getLastName()));
+    } else {
+      return null;
+    }
   }
-
+  
   @GetMapping("programslist")
   public String programslist(Map<String, Object> model) {
     Iterable<Program> programs = programService.getAll();

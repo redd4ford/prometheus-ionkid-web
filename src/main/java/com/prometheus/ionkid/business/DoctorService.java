@@ -16,4 +16,8 @@ public class DoctorService extends AbstractService<Doctor> {
     return doctorRepository;
   }
 
+  public Doctor loadByEmail(String email) {
+    return doctorRepository.findByEmail(email);
+  }
+
 }
