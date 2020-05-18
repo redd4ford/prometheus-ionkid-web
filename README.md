@@ -51,7 +51,9 @@ IONKiD uses plenty of open source projects and libraries:
 # Developers
 
 Viktoriia Yehorova | [redd4ford] | Tech Lead, Back-End Developer
+
 Vasyl Strashivskyi | [Strashisvkyi] | Full-Stack Developer
+
 Mariia Sapii | [Maria-Sparrow] | Front-End Developer
 
 ***
