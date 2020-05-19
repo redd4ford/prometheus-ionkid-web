@@ -51,6 +51,7 @@ public class UserService implements UserDetailsService {
       user.setGoogleId(googleId);
       user.setAvatarUrl(principal.getAttribute("picture"));
       user.setRoles(Collections.singleton(Role.DOCTOR));
+      userRepository.save(user);
     }
     updateLastVisit(user);
     user.setActive(true);
