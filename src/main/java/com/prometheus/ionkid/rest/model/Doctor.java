@@ -11,8 +11,10 @@ import java.util.List;
 public class Doctor extends User {
   @Column
   private String certificationId;
+
   @Column
   private String organization;
+
   @Column
   private String specialty;
 
