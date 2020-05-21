@@ -11,7 +11,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.web.AuthorizationRequestRepository;
 import org.springframework.security.oauth2.client.web.HttpSessionOAuth2AuthorizationRequestRepository;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -28,6 +29,8 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   @Autowired
   public UserService userService;
+  @Autowired
+  private PasswordEncoder passwordEncoder;
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
@@ -51,11 +54,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .baseUri("/oauth2/authorization")
             .authorizationRequestRepository(authorizationRequestRepository())
         )
-        .formLogin()
-        .loginPage("/login")
-        .loginProcessingUrl("/login")
-        .defaultSuccessUrl("/", true)
-        .permitAll()
+        .formLogin(f -> f
+            .loginPage("/login")
+            .loginProcessingUrl("/login")
+            .defaultSuccessUrl("/", true)
+            .permitAll()
+        )
+        .rememberMe()
         .and()
         .logout()
         .permitAll()
@@ -63,10 +68,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .httpBasic();
   }
 
+  @Bean
+  public PasswordEncoder getPasswordEncoder() {
+    return new BCryptPasswordEncoder(8);
+  }
+
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     auth.userDetailsService(userService)
-        .passwordEncoder(NoOpPasswordEncoder.getInstance());
+        .passwordEncoder(passwordEncoder);
   }
 
   @Bean
@@ -74,7 +84,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   authorizationRequestRepository() {
     return new HttpSessionOAuth2AuthorizationRequestRepository();
   }
-
 
   @Bean
   public RequestCacheOAuth2ClientContextFilter requestCacheOAuth2ClientContextFilter() {
