@@ -14,6 +14,7 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script type="text/javascript">
         $.ajaxSetup({
             beforeSend: function (xhr, settings) {
@@ -60,7 +61,9 @@
         <label><input type="text" name="organization" required placeholder="Organization"/></label><br><br>
         Specialty:
         <label><input type="text" name="specialty" required placeholder="Specialty"/></label><br><br>
-
+        <div class="col-sm-6">
+            <div class="g-recaptcha" data-sitekey="6LdKsfoUAAAAAKwIZibyp-nA18TXQMcI1c8uINdN"></div><br>
+        </div>
         <div>
             <button type="submit">Sign up</button>
             <button type="reset">Cancel</button>
