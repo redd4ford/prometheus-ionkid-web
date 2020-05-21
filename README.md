@@ -36,8 +36,10 @@ IONKiD uses plenty of open source projects and libraries:
 - [Maven] | Dependency Management
 - [Spring Boot] | Create Java Micro Sevice
 - [Spring Data JPA] | JPA-based repositories implementation
+- [Spring Session JDBC] | User session support
 - [Spring Security] | In-app authentication and authorization system
 - [OAuth 2] | Authentication with Google
+- [reCAPTCHA] | Check if the user is a human
 - [PostgreSQL] | Database provider
 - [Hibernate] | ORM for mapping a domain model to the database
 - [JAXB] | Mapping the Java class to XML representation
@@ -73,8 +75,10 @@ No license so far, just a student project.
    [Maven]: <https://maven.apache.org>
    [Spring Boot]: <https://spring.io/projects/spring-boot>
    [Spring Data JPA]: <https://spring.io/projects/spring-data-jpa>
+   [Spring Session JDBC]: <https://spring.io/projects/spring-session-jdbc>
    [Spring Security]: <https://spring.io/projects/spring-security>
    [OAuth 2]: <https://oauth.net/2/>
+   [reCAPTCHA]: <https://www.google.com/recaptcha/intro/v3.html>
    [PostgreSQL]: <https://www.postgresql.org>
    [Hibernate]: <https://hibernate.org>
    [JAXB]: <https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api>
