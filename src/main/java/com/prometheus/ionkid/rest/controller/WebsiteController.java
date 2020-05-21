@@ -44,7 +44,7 @@ public class WebsiteController {
       return null;
     }
   }
-  
+
   @GetMapping("programslist")
   public String programslist(Map<String, Object> model) {
     Iterable<Program> programs = programService.getAll();
