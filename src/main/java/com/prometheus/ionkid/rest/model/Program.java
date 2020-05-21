@@ -11,9 +11,6 @@ public class Program {
   @OneToMany(mappedBy = "program", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
   @JsonIgnoreProperties("program")
   public Set<Task> tasks;
-  @OneToMany(mappedBy = "program", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-  @JsonIgnoreProperties("program")
-  public Set<Comment> comments;
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
@@ -28,6 +25,7 @@ public class Program {
   @OneToOne
   @JoinColumn(name = "kid_id")
   private Kid kid;
+
   @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
   @JoinColumn(name = "doctor_id")
   @JsonIgnoreProperties("programs")
