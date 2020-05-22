@@ -17,48 +17,55 @@ public class User implements UserDetails {
   @Id
   @GeneratedValue(strategy = GenerationType.TABLE)
   protected Integer id;
+
   @Column
   protected String googleId = null;
+
   @Column
   protected String email;
+
   @Column
   protected String phoneNumber;
+
   @Column
   protected String password;
+
   @Column
   protected String firstName;
+
   @Column
   protected String lastName;
-  @Column
-  protected String username;
+
   @Column
   protected String avatarUrl;
+
   @Column
   protected String gender;
+
   @Column
   protected String country;
+
   @Column
   protected String city;
+
   @Column
   protected String dateOfBirth;
+
   @Column
   protected LocalDateTime lastVisit;
+
   @Column
   protected Boolean active;
+
   @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
   @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
   @Enumerated(EnumType.STRING)
   private Set<Role> roles;
+
   @OneToMany(mappedBy = "user")
   private List<Comment> comments = new ArrayList<Comment>();
 
   public User() {
-  }
-
-  public User(String email, String password, Boolean active) {
-    this.email = email;
-    this.password = password;
-    this.active = active;
   }
 
   public User(String googleId, String email, String phoneNumber, String password, String firstName,
@@ -70,7 +77,6 @@ public class User implements UserDetails {
     this.password = password;
     this.firstName = firstName;
     this.lastName = lastName;
-    setUsername(firstName, lastName);
     this.avatarUrl = avatarUrl;
     this.gender = gender;
     this.country = country;
@@ -78,6 +84,31 @@ public class User implements UserDetails {
     this.dateOfBirth = dateOfBirth;
     this.lastVisit = lastVisit;
     this.active = active;
+  }
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return getRoles();
+  }
+
+  @Override
+  public boolean isAccountNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isAccountNonLocked() {
+    return true;
+  }
+
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isEnabled() {
+    return getActive();
   }
 
   public Integer getId() {
@@ -113,11 +144,6 @@ public class User implements UserDetails {
   }
 
   @Override
-  public Collection<? extends GrantedAuthority> getAuthorities() {
-    return getRoles();
-  }
-
-  @Override
   public String getPassword() {
     return password;
   }
@@ -144,15 +170,15 @@ public class User implements UserDetails {
 
   @Override
   public String getUsername() {
+    String username = "";
+    for (int i = 0; i < email.length(); i++) {
+      if (!String.valueOf(email.charAt(i)).equals("@")) {
+        username += String.valueOf(email.charAt(i));
+      } else {
+        break;
+      }
+    }
     return username;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
-  public void setUsername(String firstName, String lastName) {
-    this.username = (firstName + lastName).toLowerCase();
   }
 
   public String getAvatarUrl() {
@@ -225,26 +251,6 @@ public class User implements UserDetails {
 
   public void setComments(List<Comment> comments) {
     this.comments = comments;
-  }
-
-  @Override
-  public boolean isAccountNonExpired() {
-    return true;
-  }
-
-  @Override
-  public boolean isAccountNonLocked() {
-    return true;
-  }
-
-  @Override
-  public boolean isCredentialsNonExpired() {
-    return true;
-  }
-
-  @Override
-  public boolean isEnabled() {
-    return getActive();
   }
 
 }

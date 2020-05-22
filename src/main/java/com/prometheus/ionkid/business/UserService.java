@@ -7,10 +7,8 @@ import com.prometheus.ionkid.rest.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
@@ -65,11 +63,7 @@ public class UserService implements UserDetailsService {
   }
 
   public boolean isOAuth2User(User user) {
-    if (user.getGoogleId() != null) {
-      return true;
-    } else {
-      return false;
-    }
+    return user.getGoogleId() != null;
   }
 
   public void updateLastVisit(User user) {

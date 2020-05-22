@@ -2,13 +2,12 @@ package com.prometheus.ionkid.util;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class RedirectInterceptor extends HandlerInterceptorAdapter {
   @Override
-  public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+  public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) {
     if (modelAndView != null) {
       String args;
       if (request.getQueryString() != null) {
@@ -16,7 +15,7 @@ public class RedirectInterceptor extends HandlerInterceptorAdapter {
       } else {
         args = "";
       }
-      String url = request.getRequestURI().toString() + "?" + args;
+      String url = request.getRequestURI() + "?" + args;
       response.setHeader("Turbolinks-Location", url);
     }
   }

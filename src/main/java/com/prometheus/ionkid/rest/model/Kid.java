@@ -13,24 +13,34 @@ public class Kid {
 
   @Column
   private String firstName;
+
   @Column
   private String lastName;
+
   @Column
   private String avatarUrl;
+
   @Column
   private Date dateOfBirth;
+
   @Column
   private String country;
+
   @Column
   private String city;
+
   @Column
   private String gender;
+
   @Column
   private String diagnose;
+
   @Column
   private Integer weight;
+
   @Column
   private Integer height;
+
   @Column
   private String bloodType;
 

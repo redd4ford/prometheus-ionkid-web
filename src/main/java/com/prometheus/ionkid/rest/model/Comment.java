@@ -17,9 +17,9 @@ public class Comment {
   private String message;
 
   @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-  @JoinColumn(name = "program_id")
+  @JoinColumn(name = "task_id")
   @JsonIgnoreProperties("comments")
-  private Program program;
+  private Task task;
 
   @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
   @JoinColumn(name = "user_id")
@@ -58,12 +58,12 @@ public class Comment {
     this.message = message;
   }
 
-  public Program getProgram() {
-    return program;
+  public Task getTask() {
+    return task;
   }
 
-  public void setProgram(Program program) {
-    this.program = program;
+  public void setTask(Task task) {
+    this.task = task;
   }
 
   public User getUser() {

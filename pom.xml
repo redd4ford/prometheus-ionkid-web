@@ -6,7 +6,7 @@
 
     <groupId>com.prometheus</groupId>
     <artifactId>ionkid</artifactId>
-    <version>1.3-SNAPSHOT</version>
+    <version>1.4-SNAPSHOT</version>
 
     <properties>
         <java.version>11</java.version>
@@ -28,12 +28,8 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
+
         <!-- DATABASE RELATED -->
-        <!-- dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-annotations</artifactId>
-            <version>3.5.6-Final</version>
-        </dependency-->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -49,13 +45,15 @@
             <version>42.2.2.jre7</version>
             <scope>runtime</scope>
         </dependency>
+
         <!--connect Java classes and their XML representations-->
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
             <version>2.3.0</version>
         </dependency>
-        <!-- AUTHENTICATION -->
+
+        <!-- SECURITY -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -73,6 +71,11 @@
             <artifactId>spring-security-oauth2-autoconfigure</artifactId>
             <version>2.2.6.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-jdbc</artifactId>
+        </dependency>
+
         <!-- FRONT-END LIBRARIES AND TEMPLATES -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -97,7 +100,8 @@
             <artifactId>js-cookie</artifactId>
             <version>2.1.0</version>
         </dependency>
-        <!-- TOOLS FOR CODE CLEANING -->
+
+        <!-- CODE CLEANING -->
         <dependency>
             <groupId>com.github.spotbugs</groupId>
             <artifactId>spotbugs</artifactId>
@@ -134,6 +138,7 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
