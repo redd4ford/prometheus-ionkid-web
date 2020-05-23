@@ -2,12 +2,12 @@
 <html lang="en">
 <style>
     body {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://c4.wallpaperflare.com/wallpaper/1/889/181/doctor-office-wallpaper-preview.jpg');
+        background-image: linear-gradient(rgba(0, 0, 0, 0.71), rgba(0, 0, 0, 0.71)), url('https://c4.wallpaperflare.com/wallpaper/1/889/181/doctor-office-wallpaper-preview.jpg');
         background-size: cover;
         background-attachment: fixed;
         overflow-x: hidden;
+        scroll-behavior: smooth;
     }
-
     .button {
         background-color: transparent;
         border: 3px solid #1b262c;
@@ -23,24 +23,21 @@
         border-radius: 10px;
         font-family: "Lato Regular", Arial, serif;
     }
-
     #choice1 {
         top: 70%;
         position: absolute;
         color: white;
-        font-weight: 530;
+        font-weight: 500;
         font-size: 400%;
         left: 20%;
         right: 20%;
         text-align: center;
         font-family: "Lato Regular", Arial, serif;
     }
-
     .button:hover {
         background-color: #1b262c;
         color: white;
     }
-
     #signin {
         position: absolute;
         right: 470px;
@@ -48,8 +45,9 @@
         font-family: "Lato Regular", Arial, serif;
         cursor: pointer;
         color: #ffffff;
+        text-shadow: 1px 2px 2px #26574f;
+        box-shadow: 0 0 10px 2px #183631;
     }
-
     #signup {
         position: absolute;
         right: 100px;
@@ -57,16 +55,18 @@
         font-family: "Lato Regular", Arial, serif;
         cursor: pointer;
         color: #ffffff;
+        text-shadow: 1px 2px 2px #26574f;
+        box-shadow: 0 0 10px 2px #183631;
     }
-
     #logout {
         position: absolute;
         right: 150px;
         top: 50px;
         font-family: "Lato Regular", Arial, serif;
         cursor: pointer;
+        text-shadow: 1px 2px 2px #26574f;
+        box-shadow: 0 0 10px 2px #183631;
     }
-
     #login {
         position: absolute;
         right: 246px;
@@ -74,53 +74,54 @@
         font-family: "Lato Regular", Arial, serif;
         cursor: pointer;
         color: #ffffff;
+        text-shadow: 1px 2px 2px #26574f;
+        box-shadow: 0 0 10px 2px #183631;
     }
-
     #experience {
         position: absolute;
         left: 400px;
-        top: 435px;
+        top: 545px;
         background-color: #27373fED;
         color: #ffffff;
         font-size: 300%;
         font-family: "Lato Regular", Arial, serif;
         padding-right: 0.2em;
-        padding-left: 0.3em;
+        padding-left: 0.2em;
+        box-shadow: 0 0 3px 1px #070d0c;
     }
-
     div.matters {
         background-color: white;
         color: black;
         font-size: 300%;
         position: absolute;
         left: 880px;
-        top: 435px;
+        top: 545px;
         mix-blend-mode: screen;
-        padding-left: 0.1em;
-        padding-right: 0.3em;
+        padding-left: 0.2em;
+        padding-right: 0.2em;
         font-family: "Lato Regular", Arial, serif;
+        box-shadow: 0 0 3px 1px #070d0c;
     }
-
     div.providing {
         text-align: right;
-        top: 335px;
-        right: 190px;
+        text-shadow: 1px 2px 3px #000;
+        top: 445px;
+        right: 200px;
         position: absolute;
         margin-right: 215px;
-        font-size: 30px;
+        font-size: 28px;
         color: white;
         font-family: "Lato Regular", Arial, serif;
     }
-
     div.logo {
         left: 150px;
         top: 100px;
         font-size: 500%;
         font-family: Blippo, sans-serif;
+        text-shadow: 1px 2px 3px #000;
         color: #50c3b0;
         position: absolute;
     }
-
     div.hello {
         top: 30%;
         font-size: 500%;
@@ -131,14 +132,15 @@
         text-align: center;
         left: 10%;
         right: 10%;
-        font-weight: 560;
+        font-weight: 600;
     }
-
     div.name {
         background-color: #1b262c;
         display: inline;
+        box-shadow: 0 0 3px 1px #070d0c;
+        padding-left: 10px;
+        padding-right: 10px;
     }
-
     .please {
         top: 50%;
         position: absolute;
@@ -149,8 +151,8 @@
         right: 20%;
         text-align: center;
         font-family: "Lato Regular", Arial, serif;
+        text-shadow: 1px 2px 3px #000;
     }
-
     .text1 {
         margin-top: 3%;
         margin-left: 0;
@@ -160,7 +162,6 @@
         color: #2c373d;
         margin-right: 0;
     }
-
     .parallax-container {
         background-color: #eef8ff;
         margin-left: calc(-50vw + 50%);
@@ -169,7 +170,6 @@
         margin-right: calc(50vw + 50%);
         margin-top: 6%
     }
-
     .exp {
         font-size: 23px;
         padding-left: 20%;
@@ -177,50 +177,39 @@
         font-family: "Lato Regular", Arial, serif;
         color: #113247;
     }
-
     hr.new5 {
         border: 3px dashed #1b262c;
         border-radius: 5px;
     }
-
     .scroller {
-        margin-top: 59%;
+        margin-top: 62%;
     }
-
     ul li {
         display: inline;
     }
-
     .together {
         display: inline;
     }
-
     .a1 {
         padding-left: 700px;
     }
-
     #link {
         color: white;
     }
-
     .full-width {
         width: 100vw;
         margin-left: -50vw;
         left: 50%;
     }
-
     .buttons-get-started {
         margin: auto;
     }
-
     li {
         display: inline-block
     }
-
     .left {
         float: left
     }
-
     .right {
         float: right
     }
@@ -266,12 +255,20 @@
     </script>
     <script>
         function scrollWin() {
-            window.scrollTo(0, 770);
+            window.scroll({
+                top: 800,
+                left: 0,
+                behavior: 'smooth'
+            });
         }
     </script>
     <script>
         function scrollBack() {
-            window.scrollTo(0, 0);
+            window.scroll({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
         }
     </script>
 </head>
@@ -279,29 +276,29 @@
 <body>
 <div class="container unauthenticated">
     <a id="signin" href="/oauth2/authorization/google" class="btn btn-info btn-lg" role="button"><b>
-        <div style="color:white">SIGN IN(Google)</div>
+        <div style="color:white">SIGN IN (Google)</div>
     </b></a>
     <a id="login" href="/login" class="btn btn-info btn-lg" role="button">
-        <div style="color:white"><b>SIGN IN(IONKID)</b></div>
+        <div style="color:white"><b>SIGN IN (IONKiD)</b></div>
     </a>
-    <a id="signup" href="#" class="btn btn-info btn-lg" role="button"><b>
+    <a id="signup" href="/registration" class="btn btn-info btn-lg" role="button"><b>
         <div style="color:white">SIGN UP<br></div>
     </b></a>
     <b id="experience" class="font-weight-bolder">YOUR EXPERIENCE</b>
     <div class="matters font-weight-bolder">MATTERS</div>
     <div class="providing"><b>providing a workplace for doctors<br>specializing in developmental disorders</b></div>
-    <div class="logo font-weight-bolder">IONKID</div>
+    <div class="logo font-weight-bolder">iONKiD</div>
     <p style="text-align:center;"><button onclick="scrollWin()" type="button" class="btn btn-outline-dark scroller">
         <div style="font-size:20px; color:white">learn more ▼</div>
     </button></p>
-    <div class="parallax-container full-width">
+    <div class="parallax-container full-width" id="main-content">
         <div>
             <br>
             <h1><u style="margin-top:20px; background-color: #1b262c; padding-left: 15%; padding-right:20px; font-size:40px; color:white; border-radius: 5px;"><b>WHAT IS THIS?</b></u></h1>
         </div>
         <br>
         <div class="exp">
-            <hr class="new5"> Nowadays there are not many therapists who specialize in children with special needs(Autism, Dawn syndrome, cerebral palsy etc.). <br><br> The conditions of their work are pretty terrible even if it is remote. <br><br> This enthusiastic student project is on a mission to create the most comfortable workspace ever for such specialists
+            <hr class="new5"> Nowadays there are not many therapists who specialize in children with special needs (Autism, Dawn syndrome, cerebral palsy etc.). <br><br> The conditions of their work are pretty terrible even if it is remote. <br><br> This enthusiastic student project is on a mission to become the most comfortable workspace ever for such specialists.
             <hr class="new5">
             <br>
         </div>
@@ -312,11 +309,11 @@
         <div class="exp">
             <hr class="new5">
             <div style="font-weight: bolder; font-size:30px">FOCUS ON TREATMENT</div>
-            <p>No emojis. No ads. Keep it simple. Just you and your patients</p>
+            <p>No emojis. No ads. Keep it simple. Just you and your patients.</p>
             <div style="font-weight: bolder; font-size:30px">BLURRING THE BORDERS</div>
-            <p>Not everybody speaks English, we want to save your time, wasted on Google Translate. Read and write both treatment programs and messages in any language you prefer</p>
+            <p>Not everybody speaks English, so we want to save your time wasted on Google Translate. Read and write both treatment programs and messages in any language you prefer.</p>
             <div style="font-weight: bolder; font-size:30px">ALL IN ONE PLACE</div>
-            <p>Keep all your information on patients, treatment programs and to do lists in your workplace. Everything is secured</p>
+            <p>Keep all your information on patients, treatment programs and to do lists in your workplace. Everything is secured.</p>
             <hr class="new5">
         </div>
         <div class="buttons-get-started text-center">
@@ -358,7 +355,7 @@
     </div>
     <div class="please">| Please, choose an option |</div>
     <div class="container">
-        <pre id="choice1"><a href="\userslist" class="btn btn-light btn-lg" role="button"><b> USERS </b></a>       <a href="\programslist" class="btn btn-light btn-lg" role="button" ><b>PROGRAMS</b></a></pre>
+        <pre id="choice1"><a href="\userslist" class="btn btn-light btn-lg" role="button" style="box-shadow: 0 0 3px 1px #070d0c;"><b> USERS </b></a>       <a href="\programslist" class="btn btn-light btn-lg" role="button" style="box-shadow: 0 0 3px 1px #070d0c;"><b>PROGRAMS</b></a></pre>
     </div>
     <div class="container">
         <button onClick="logout()" class="btn btn-info btn-lg" id="logout"><b>LOG OUT</b></button>
