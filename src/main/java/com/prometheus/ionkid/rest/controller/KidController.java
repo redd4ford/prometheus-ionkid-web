@@ -14,7 +14,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RequestMapping("/kids")
 @RestController
 public class KidController {
+
   private AtomicInteger kidIdCounter = new AtomicInteger();
+
   @Autowired
   private KidService kidService;
 

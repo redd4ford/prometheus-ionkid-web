@@ -18,6 +18,7 @@ import java.util.Map;
 
 @Controller
 public class AuthenticationController {
+
   private final static String CAPTCHA_URL = "https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s";
 
   @Autowired
@@ -80,4 +81,5 @@ public class AuthenticationController {
   public String login() {
     return "login";
   }
+
 }

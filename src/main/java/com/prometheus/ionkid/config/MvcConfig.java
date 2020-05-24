@@ -28,4 +28,5 @@ public class MvcConfig implements WebMvcConfigurer {
   public RestTemplate getRestTemplate() {
     return new RestTemplate();
   }
+
 }

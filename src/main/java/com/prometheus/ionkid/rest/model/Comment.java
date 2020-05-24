@@ -7,12 +7,14 @@ import java.util.Date;
 
 @Entity
 public class Comment {
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
 
   @Column
   private Date date;
+
   @Column
   private String message;
 
@@ -73,4 +75,5 @@ public class Comment {
   public void setUser(User user) {
     this.user = user;
   }
+
 }

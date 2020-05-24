@@ -8,20 +8,23 @@ import java.util.Set;
 
 @Entity
 public class Program {
-  @OneToMany(mappedBy = "program", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-  @JsonIgnoreProperties("program")
-  public Set<Task> tasks;
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
+
   @Column
   private String description;
+
   @Column
   private Integer progress;
+
   @Column
   private Date startDate;
+
   @Column
   private Date endDate;
+
   @OneToOne
   @JoinColumn(name = "kid_id")
   private Kid kid;
@@ -30,6 +33,10 @@ public class Program {
   @JoinColumn(name = "doctor_id")
   @JsonIgnoreProperties("programs")
   private Doctor doctor;
+
+  @OneToMany(mappedBy = "program", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+  @JsonIgnoreProperties("program")
+  public Set<Task> tasks;
 
   public Program() {
   }
@@ -104,5 +111,5 @@ public class Program {
   public void setTasks(Set<Task> tasks) {
     this.tasks = tasks;
   }
-}
 
+}

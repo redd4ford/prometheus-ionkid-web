@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ParentService extends AbstractService<Parent> {
+
   @Autowired
   private ParentRepository parentRepository;
 

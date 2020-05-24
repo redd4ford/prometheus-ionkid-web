@@ -14,6 +14,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
     basePackageClasses = {Application.class, Jsr310JpaConverters.class}
 )
 public class Application {
+
   public static void main(String[] args) throws Throwable {
     SpringApplication.run(Application.class, args);
   }

@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.net.URI;
 
 public class RequestCacheOAuth2ClientContextFilter extends OAuth2ClientContextFilter {
+
   private final RequestCache cache = new HttpSessionRequestCache();
 
   @Override
@@ -35,4 +36,5 @@ public class RequestCacheOAuth2ClientContextFilter extends OAuth2ClientContextFi
     cache.saveRequest(wrapper, response);
     super.redirectUser(e, request, response);
   }
+
 }

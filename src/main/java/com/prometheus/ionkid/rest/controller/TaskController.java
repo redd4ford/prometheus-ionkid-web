@@ -14,7 +14,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RequestMapping("/tasks")
 @RestController
 public class TaskController {
+
   private AtomicInteger taskIdCounter = new AtomicInteger();
+
   @Autowired
   private TaskService taskService;
 

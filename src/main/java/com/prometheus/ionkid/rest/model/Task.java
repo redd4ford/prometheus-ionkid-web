@@ -7,20 +7,25 @@ import java.util.Set;
 
 @Entity
 public class Task {
-  @OneToMany(mappedBy = "task", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-  @JsonIgnoreProperties("task")
-  public Set<Comment> comments;
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
+
   @Column
   private Boolean status;
+
   @Column
   private String description;
+
   @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
   @JoinColumn(name = "program_id")
   @JsonIgnoreProperties("tasks")
   private Program program;
+
+  @OneToMany(mappedBy = "task", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+  @JsonIgnoreProperties("task")
+  public Set<Comment> comments;
 
   public Task() {
   }
@@ -69,5 +74,5 @@ public class Task {
   public void setComments(Set<Comment> comments) {
     this.comments = comments;
   }
-}
 
+}

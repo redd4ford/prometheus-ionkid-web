@@ -14,7 +14,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RequestMapping("/comments")
 @RestController
 public class CommentController {
+
   private AtomicInteger commentIdCounter = new AtomicInteger();
+
   @Autowired
   private CommentService commentService;
 
