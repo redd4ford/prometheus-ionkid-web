@@ -1,6 +1,7 @@
 package com.prometheus.ionkid.config;
 
 import com.prometheus.ionkid.business.UserService;
+import com.prometheus.ionkid.config.contextfilter.RequestCacheOAuth2ClientContextFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -11,7 +12,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.web.AuthorizationRequestRepository;
 import org.springframework.security.oauth2.client.web.HttpSessionOAuth2AuthorizationRequestRepository;
@@ -62,15 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         )
         .rememberMe()
         .and()
-        .logout()
-        .permitAll()
-        .and()
         .httpBasic();
-  }
-
-  @Bean
-  public PasswordEncoder getPasswordEncoder() {
-    return new BCryptPasswordEncoder(8);
   }
 
   @Override
