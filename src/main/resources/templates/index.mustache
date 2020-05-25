@@ -1,224 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-    body {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.71), rgba(0, 0, 0, 0.71)), url('https://c4.wallpaperflare.com/wallpaper/1/889/181/doctor-office-wallpaper-preview.jpg');
-        background-size: cover;
-        background-attachment: fixed;
-        overflow-x: hidden;
-        scroll-behavior: smooth;
-    }
-    .button {
-        background-color: transparent;
-        border: 3px solid #1b262c;
-        color: black;
-        padding: 23px 50px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 35px;
-        margin: 7px 20px;
-        transition-duration: 0.3s;
-        cursor: pointer;
-        border-radius: 10px;
-        font-family: "Lato Regular", Arial, serif;
-    }
-    #choice1 {
-        top: 70%;
-        position: absolute;
-        color: white;
-        font-weight: 500;
-        font-size: 400%;
-        left: 20%;
-        right: 20%;
-        text-align: center;
-        font-family: "Lato Regular", Arial, serif;
-    }
-    .button:hover {
-        background-color: #1b262c;
-        color: white;
-    }
-    #signin {
-        position: absolute;
-        right: 470px;
-        top: 50px;
-        font-family: "Lato Regular", Arial, serif;
-        cursor: pointer;
-        color: #ffffff;
-        text-shadow: 1px 2px 2px #26574f;
-        box-shadow: 0 0 10px 2px #183631;
-    }
-    #signup {
-        position: absolute;
-        right: 100px;
-        top: 50px;
-        font-family: "Lato Regular", Arial, serif;
-        cursor: pointer;
-        color: #ffffff;
-        text-shadow: 1px 2px 2px #26574f;
-        box-shadow: 0 0 10px 2px #183631;
-    }
-    #logout {
-        position: absolute;
-        right: 150px;
-        top: 50px;
-        font-family: "Lato Regular", Arial, serif;
-        cursor: pointer;
-        text-shadow: 1px 2px 2px #26574f;
-        box-shadow: 0 0 10px 2px #183631;
-    }
-    #login {
-        position: absolute;
-        right: 246px;
-        top: 50px;
-        font-family: "Lato Regular", Arial, serif;
-        cursor: pointer;
-        color: #ffffff;
-        text-shadow: 1px 2px 2px #26574f;
-        box-shadow: 0 0 10px 2px #183631;
-    }
-    #experience {
-        position: absolute;
-        left: 400px;
-        top: 545px;
-        background-color: #27373fED;
-        color: #ffffff;
-        font-size: 300%;
-        font-family: "Lato Regular", Arial, serif;
-        padding-right: 0.2em;
-        padding-left: 0.2em;
-        box-shadow: 0 0 3px 1px #070d0c;
-    }
-    div.matters {
-        background-color: white;
-        color: black;
-        font-size: 300%;
-        position: absolute;
-        left: 880px;
-        top: 545px;
-        mix-blend-mode: screen;
-        padding-left: 0.2em;
-        padding-right: 0.2em;
-        font-family: "Lato Regular", Arial, serif;
-        box-shadow: 0 0 3px 1px #070d0c;
-    }
-    div.providing {
-        text-align: right;
-        text-shadow: 1px 2px 3px #000;
-        top: 445px;
-        right: 200px;
-        position: absolute;
-        margin-right: 215px;
-        font-size: 28px;
-        color: white;
-        font-family: "Lato Regular", Arial, serif;
-    }
-    div.logo {
-        left: 150px;
-        top: 100px;
-        font-size: 500%;
-        font-family: Blippo, sans-serif;
-        text-shadow: 1px 2px 3px #000;
-        color: #50c3b0;
-        position: absolute;
-    }
-    div.hello {
-        top: 30%;
-        font-size: 500%;
-        font-family: "Lato Regular", Arial, serif;
-        color: white;
-        position: absolute;
-        display: inline;
-        text-align: center;
-        left: 10%;
-        right: 10%;
-        font-weight: 600;
-    }
-    div.name {
-        background-color: #1b262c;
-        display: inline;
-        box-shadow: 0 0 3px 1px #070d0c;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-    .please {
-        top: 50%;
-        position: absolute;
-        color: #50c3b0;
-        font-weight: bolder;
-        font-size: 230%;
-        left: 20%;
-        right: 20%;
-        text-align: center;
-        font-family: "Lato Regular", Arial, serif;
-        text-shadow: 1px 2px 3px #000;
-    }
-    .text1 {
-        margin-top: 3%;
-        margin-left: 0;
-        background-color: #eef8ff;
-        width: 100%;
-        box-sizing: content-box;
-        color: #2c373d;
-        margin-right: 0;
-    }
-    .parallax-container {
-        background-color: #eef8ff;
-        margin-left: calc(-50vw + 50%);
-        position: relative;
-        width: 120%;
-        margin-right: calc(50vw + 50%);
-        margin-top: 6%
-    }
-    .exp {
-        font-size: 23px;
-        padding-left: 20%;
-        padding-right: 20%;
-        font-family: "Lato Regular", Arial, serif;
-        color: #113247;
-    }
-    hr.new5 {
-        border: 3px dashed #1b262c;
-        border-radius: 5px;
-    }
-    .scroller {
-        margin-top: 62%;
-    }
-    ul li {
-        display: inline;
-    }
-    .together {
-        display: inline;
-    }
-    .a1 {
-        padding-left: 700px;
-    }
-    #link {
-        color: white;
-    }
-    .full-width {
-        width: 100vw;
-        margin-left: -50vw;
-        left: 50%;
-    }
-    .buttons-get-started {
-        margin: auto;
-    }
-    li {
-        display: inline-block
-    }
-    .left {
-        float: left
-    }
-    .right {
-        float: right
-    }
-</style>
-
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Home page</title>
+    <title>iONKiD | Home</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <base href="/" />
@@ -226,51 +11,14 @@
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css" />
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     <script type="text/javascript" src='http://cdn.renderedfont.com/js/renderedfont-0.8.min.js#free'></script>
-    <script type="text/javascript">
-        $.ajaxSetup({
-            beforeSend: function(xhr, settings) {
-                if (settings.type === 'POST' || settings.type === 'PUT' || settings.type === 'DELETE') {
-                    if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
-                        xhr.setRequestHeader("X-XSRF-TOKEN", Cookies.get('XSRF-TOKEN'));
-                    }
-                }
-            }
-        });
-        $.get("/user", function(data) {
-            $("#user").html(data.name);
-            $(".unauthenticated").hide();
-            $(".authenticated").show();
-        });
-        var logout = function() {
-            $.post("/logout", function() {
-                $("#user").html('');
-                $(".unauthenticated").show();
-                $(".authenticated").hide();
-            });
-            return true;
-        };
-    </script>
-    <script>
-        function scrollWin() {
-            window.scroll({
-                top: 800,
-                left: 0,
-                behavior: 'smooth'
-            });
-        }
-    </script>
-    <script>
-        function scrollBack() {
-            window.scroll({
-                top: 0,
-                left: 0,
-                behavior: 'smooth'
-            });
-        }
-    </script>
+    <script type="text/javascript" src='/static/js/xsrf.token.js'></script>
+    <script type="text/javascript" src='/static/js/smooth.scroll.js'></script>
+    <script type="text/javascript" src='/static/js/user.name.js'></script>
+    <script type="text/javascript" src='/static/js/logout.js'></script>
 </head>
 
 <body>
@@ -281,13 +29,14 @@
     <a id="login" href="/login" class="btn btn-info btn-lg" role="button">
         <div style="color:white"><b>SIGN IN (IONKiD)</b></div>
     </a>
-    <a id="signup" href="/registration" class="btn btn-info btn-lg" role="button"><b>
+    <a id="signup" href="/registration?" class="btn btn-info btn-lg" role="button"><b>
         <div style="color:white">SIGN UP<br></div>
     </b></a>
     <b id="experience" class="font-weight-bolder">YOUR EXPERIENCE</b>
     <div class="matters font-weight-bolder">MATTERS</div>
     <div class="providing"><b>providing a workplace for doctors<br>specializing in developmental disorders</b></div>
-    <div class="logo font-weight-bolder">iONKiD</div>
+    <div class="logo">
+    </div>
     <p style="text-align:center;"><button onclick="scrollWin()" type="button" class="btn btn-outline-dark scroller">
         <div style="font-size:20px; color:white">learn more ▼</div>
     </button></p>
@@ -333,7 +82,7 @@
                     <li class="breadcrumb-item"> <a href="#" id="link"><b>AFFILIATE PROGRAMS</b></a></li>
                     <li class="breadcrumb-item"> <a href="#" id="link"><b>SUPPORT</b></a></li>
                 </ul>
-                <ul class="right" ; style="margin-top: 1%">
+                <ul class="right" style="margin-top: 1%">
                     <li class="breadcrumb-item"><a class="a1" href="#" id="link"><b>TERMS OF USE </b></a></li>
                     <li class="breadcrumb-item"><a href="#" id="link"><b>PRIVACY POLICY </b></a></li>
                 </ul>
