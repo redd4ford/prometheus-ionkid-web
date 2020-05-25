@@ -7,41 +7,13 @@
     <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        $.ajaxSetup({
-            beforeSend : function(xhr, settings) {
-                if (settings.type == 'POST' || settings.type == 'PUT'
-                        || settings.type == 'DELETE') {
-                    if (!(/^http:.*/.test(settings.url) || /^https:.*/
-                            .test(settings.url))) {
-                        xhr.setRequestHeader("X-XSRF-TOKEN", Cookies.get('XSRF-TOKEN'));
-                    }
-                }
-            }
-        });
-        $.get("/user", function(data) {
-            $("#user").html(data.name);
-            $(".unauthenticated").hide();
-            $(".authenticated").show();
-        });
-        var logout = function() {
-            $.post("/logout", function() {
-                $("#user").html('');
-                $(".unauthenticated").show();
-                $(".authenticated").hide();
-                window.location = '/';
-            });
-            return true;
-        };
-        var goToHome = function() {
-            window.location = '/';
-        };
-    </script>
+    <script type="text/javascript" src='/static/js/xsrf.token.js'></script>
+    <script type="text/javascript" src='/static/js/logout.js'></script>
 </head>
 
 <body>
 <div>
-    <button onclick="goToHome()" class="btn btn-info">IONKiD</button>   <a href="/programslist">PROGRAMS</a><br><br>
+    <button onclick="window.location.href='/'" class="btn btn-info">IONKiD</button>   <a href="/programslist">PROGRAMS</a><br><br>
     <button onClick="logout()" class="btn btn-primary">Logout</button>
     <br>
     <b>Users List</b><br>
