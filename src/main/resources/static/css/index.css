@@ -1,0 +1,215 @@
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('../image/background.png');
+    background-size: cover;
+    background-attachment: fixed;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+.button {
+    background-color: transparent;
+    border: 3px solid #1b262c;
+    color: black;
+    padding: 23px 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 35px;
+    margin: 7px 20px;
+    transition-duration: 0.3s;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: "Lato Regular", Arial, serif;
+}
+#choice1 {
+    top: 70%;
+    position: absolute;
+    color: white;
+    font-weight: 500;
+    font-size: 400%;
+    left: 20%;
+    right: 20%;
+    text-align: center;
+    font-family: "Lato Regular", Arial, serif;
+}
+.button:hover {
+    background-color: #1b262c;
+    color: white;
+}
+#signin {
+    position: absolute;
+    right: 470px;
+    top: 50px;
+    font-family: "Lato Regular", Arial, serif;
+    cursor: pointer;
+    color: #ffffff;
+    text-shadow: 1px 2px 2px #26574f;
+    box-shadow: 0 0 10px 2px #183631;
+}
+#signup {
+    position: absolute;
+    right: 100px;
+    top: 50px;
+    font-family: "Lato Regular", Arial, serif;
+    cursor: pointer;
+    color: #ffffff;
+    text-shadow: 1px 2px 2px #26574f;
+    box-shadow: 0 0 10px 2px #183631;
+}
+#logout {
+    position: absolute;
+    right: 150px;
+    top: 50px;
+    font-family: "Lato Regular", Arial, serif;
+    cursor: pointer;
+    text-shadow: 1px 2px 2px #26574f;
+    box-shadow: 0 0 10px 2px #183631;
+}
+#login {
+    position: absolute;
+    right: 246px;
+    top: 50px;
+    font-family: "Lato Regular", Arial, serif;
+    cursor: pointer;
+    color: #ffffff;
+    text-shadow: 1px 2px 2px #26574f;
+    box-shadow: 0 0 10px 2px #183631;
+}
+#experience {
+    position: absolute;
+    left: 400px;
+    top: 545px;
+    background-color: #27373fED;
+    color: #ffffff;
+    font-size: 300%;
+    font-family: "Lato Regular", Arial, serif;
+    padding-right: 0.2em;
+    padding-left: 0.2em;
+    box-shadow: 0 0 3px 1px #070d0c;
+}
+div.matters {
+    background-color: white;
+    color: black;
+    font-size: 300%;
+    position: absolute;
+    left: 880px;
+    top: 545px;
+    mix-blend-mode: screen;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+    font-family: "Lato Regular", Arial, serif;
+    box-shadow: 0 0 3px 1px #070d0c;
+}
+div.providing {
+    text-align: right;
+    text-shadow: 1px 2px 3px #000;
+    top: 445px;
+    right: 200px;
+    position: absolute;
+    margin-right: 215px;
+    font-size: 28px;
+    color: white;
+    font-family: "Lato Regular", Arial, serif;
+}
+.logo {
+    background-image: url('../image/logo-cyan-small.png');
+    width: 299px;
+    height: 131px;
+    left: 150px;
+    top: 100px;
+    font-size: 500%;
+    font-family: Blippo, sans-serif;
+    text-shadow: 1px 2px 3px #000;
+    color: #50c3b0;
+    position: absolute;
+}
+div.hello {
+    top: 30%;
+    font-size: 500%;
+    font-family: "Lato Regular", Arial, serif;
+    color: white;
+    position: absolute;
+    display: inline;
+    text-align: center;
+    left: 10%;
+    right: 10%;
+    font-weight: 600;
+}
+div.name {
+    background-color: #1b262c;
+    display: inline;
+    box-shadow: 0 0 3px 1px #070d0c;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.please {
+    top: 50%;
+    position: absolute;
+    color: #50c3b0;
+    font-weight: bolder;
+    font-size: 230%;
+    left: 20%;
+    right: 20%;
+    text-align: center;
+    font-family: "Lato Regular", Arial, serif;
+    text-shadow: 1px 2px 3px #000;
+}
+.text1 {
+    margin-top: 3%;
+    margin-left: 0;
+    background-color: #eef8ff;
+    width: 100%;
+    box-sizing: content-box;
+    color: #2c373d;
+    margin-right: 0;
+}
+.parallax-container {
+    background-color: #eef8ff;
+    margin-left: calc(-50vw + 50%);
+    position: relative;
+    width: 120%;
+    margin-right: calc(50vw + 50%);
+    margin-top: 6%
+}
+.exp {
+    font-size: 23px;
+    padding-left: 20%;
+    padding-right: 20%;
+    font-family: "Lato Regular", Arial, serif;
+    color: #113247;
+}
+hr.new5 {
+    border: 3px dashed #1b262c;
+    border-radius: 5px;
+}
+.scroller {
+    margin-top: 62%;
+}
+ul li {
+    display: inline;
+}
+.together {
+    display: inline;
+}
+.a1 {
+    padding-left: 700px;
+}
+#link {
+    color: white;
+}
+.full-width {
+    width: 100vw;
+    margin-left: -50vw;
+    left: 50%;
+}
+.buttons-get-started {
+    margin: auto;
+}
+li {
+    display: inline-block
+}
+.left {
+    float: left
+}
+.right {
+    float: right
+}
