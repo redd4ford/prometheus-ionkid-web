@@ -43,6 +43,7 @@ public class AuthenticationController {
                         @RequestParam String firstName, @RequestParam String lastName,
                         @RequestParam String gender, @RequestParam String dateOfBirth,
                         @RequestParam String country, @RequestParam String city,
+                        @RequestParam String phoneNumber, @RequestParam String certificationId,
                         @RequestParam String organization, @RequestParam String specialty,
                         @RequestParam("g-recaptcha-response") String captchaResponse,
                         Map<String, Object> model) {
@@ -70,8 +71,10 @@ public class AuthenticationController {
     user.setDateOfBirth(dateOfBirth);
     user.setCountry(country);
     user.setCity(city);
+    user.setPhoneNumber(phoneNumber);
     ((Doctor) user).setOrganization(organization);
     ((Doctor) user).setSpecialty(specialty);
+    ((Doctor) user).setCertificationId(certificationId);
     userService.createNotOAuth2User(user);
 
     return "redirect:/login";
