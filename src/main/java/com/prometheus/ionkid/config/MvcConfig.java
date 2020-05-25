@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -29,4 +30,10 @@ public class MvcConfig implements WebMvcConfigurer {
     return new RestTemplate();
   }
 
+  @Override
+  public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    registry.addResourceHandler("/static/css/**").addResourceLocations("classpath:/static/css/");
+    registry.addResourceHandler("/static/image/**").addResourceLocations("classpath:/static/image/");
+    registry.addResourceHandler("/static/js/**").addResourceLocations("classpath:/static/js/");
+  }
 }
