@@ -1,36 +1,102 @@
+<!DOCTYPE html>
 <html>
+
 <head>
     <title>User list</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/userlist.css" />
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src='/static/js/sidebar.dropdown.js'></script>
     <script type="text/javascript" src='/static/js/xsrf.token.js'></script>
+    <script type="text/javascript" src='/static/js/user.name.js'></script>
     <script type="text/javascript" src='/static/js/logout.js'></script>
 </head>
 
 <body>
-<div>
-    <button onclick="window.location.href='/'" class="btn btn-info">IONKiD</button>   <a href="/programslist">PROGRAMS</a><br><br>
-    <button onClick="logout()" class="btn btn-primary">Logout</button>
-    <br>
-    <b>Users List</b><br>
-    {{#users}}
-        <div>
-        {{#avatarUrl}}<img src="{{avatarUrl}}" alt="avatar">{{/avatarUrl}} {{^avatarUrl}} NO AVATAR {{/avatarUrl}}<br>
-            <b>ID: {{id}}</b>
-            <p>Name:{{#firstName}} {{firstName}} {{/firstName}} {{^firstName}} NA {{/firstName}} {{#lastName}} {{lastName}} {{/lastName}} {{^lastName}} NA {{/lastName}}</p>
-            <p>EMAIL:{{#email}} {{email}} {{/email}}     {{^email}} NA {{/email}}</p>
-            <p>ROLES: {{roles}}</p>
-            <p>LAST VISIT: {{#lastVisit}} {{lastVisit}} {{/lastVisit}}     {{^lastVisit}} NA {{/lastVisit}}</p>
+<div class="grid-container">
+    <div class="item1">
+        <div class="your-profile">YOUR PROFILE</div>
+    </div>
+    <div class="item2 " >
+        <div class="sidenav" style="padding-top: 10%;">
+            <button class="dropdown-btn">My account<i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="#">Settings</a>
+                <a href="#">Update info</a>
+                <a onClick="logout()" href="#">Log out</a>
 
+            </div>
+
+            <button class="dropdown-btn">My patients<i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                {{#users}}
+                    <a href="#">{{firstName}} {{lastName}}</a>
+                {{/users}}
+            </div>
+            <button class="dropdown-btn" href="#">My messages</button>
+
+            <button class="dropdown-btn">My programs<i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="#">Add new program..</a>
+                <a href="/programslist">Program list</a>
+                {{#programs}}
+                    <a href="#">{{id}}</a>
+                {{/programs}}
+
+
+            </div>
         </div>
-    {{/users}}
-    <br>
+    </div>
+    <div class="item3">
+        <br>
+        <div style="text-align:center;">
+            <div style="font-size:24px">Total: {{total}}</div><br>
 
+            {{#users}}
+                <div style="text-align:center;">
+                    {{#avatarUrl}}<img src="{{avatarUrl}}" class="rounded-circle" style="width:200px;height:200px;" alt="avatar">{{/avatarUrl}} {{^avatarUrl}} NO AVATAR {{/avatarUrl}}<br><br><br><br>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+            {{/users}}
+            <br>
+        </div>
+    </div>
+    <div class="item4">
+        <br>
+        <br>
+        <br>
+        {{#users}}
+            <div class="data">
+                <p><b style="font-size: 24px">{{#firstName}} {{firstName}} {{/firstName}} {{^firstName}} NA {{/firstName}} {{#lastName}} {{lastName}} {{/lastName}} {{^lastName}} NA {{/lastName}}</b></p>
+                <p>Email:{{#email}} {{email}} {{/email}} {{^email}} NA {{/email}}</p>
+                <p>Role: {{roles}}</p>
+                <p>Last visit: {{#lastVisit}} {{lastVisit}} {{/lastVisit}} {{^lastVisit}} NA {{/lastVisit}}</p>
+                <p>Id: {{id}}</p>
+                <button type="button" class="btn btn-outline-dark btn-lg">More info</button> &nbsp;&nbsp;
+                <button type="button" class="btn btn-dark btn-lg">Message</button>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
+
+        {{/users}}
+
+    </div>
 </div>
+
 </body>
 
 </html>
