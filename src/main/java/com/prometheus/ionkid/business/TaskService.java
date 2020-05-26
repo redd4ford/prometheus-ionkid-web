@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TaskService extends AbstractService<Task> {
+
   @Autowired
   private TaskRepository taskRepository;
 

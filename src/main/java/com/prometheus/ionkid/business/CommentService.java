@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CommentService extends AbstractService<Comment> {
+
   @Autowired
   private CommentRepository commentRepository;
 

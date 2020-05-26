@@ -1,6 +1,7 @@
-[![N|Solid](https://lh3.googleusercontent.com/ZABLGeHrDuqWSblpVDWaQYeIkL_4sa6U0RaqFvTBe3PqcucnJ96IteLcf_g21bApGymAZ18Ylm_I65KVJldKYZMGGJjJP_OfkmTGTa-9D1IjxAdlHWKnxI5-TtnUjEd8DJPVdSvTzSrGHUu8zFjOIh90xLH43bgz32g0MnHbFY5ekQBjmN-ug_8KxLSo7142gdXoiWaihQDXVsNx-6kuGlSh5K7hR6d0VAnKB-dHyicWHKaeyp9OMi3g4v7DXEKVOZICobd2-KzICkH6_TCrerAAav84tj_YoPN-eHcFDMafUZDzOtmQ-WfxUpnII9Tl4K6Qll5MoYbr17taCXEc-DeCkzno8-Te0UFtDpB3CFhq3gySrASXwO-cX7hqZSSP8nHAy01RNI9JzUBSnfI9wJMB-eahgZ63IEUgdbcJwVPmUWZe8dltIyJ3Y_UPxiUYZhVqzO37uFRWrqU0LulfFqzfsMLqT97aZwVnJ8lQZaJe1LMOsGDQ4Oz-Dc1V8gBBjR7P3uyljX6fFs0fQg_lhOxbL-g4XqfOUneV7MukJFNJDnV6YXKfbfIMxJpvrVBEuJKi7Jg-aIBdaDo5uwlyiNwkP072Jyvj0MmPa0-S_LXMS-wRkNSgGvpKmHfIV3siRPF01EFoB3EcAAd1-oSfr1qMr_kK8dbf-JsAB-w7iFvR1nGHcZTo-ClYS2mn=w97-h53-no?authuser=0)](https://trello.com/b/qJgD7BVZ/prometheus-board) [![N|Solid](https://lh3.googleusercontent.com/ll_lI4Y0YJiQOyRkAOWcwKv38cycx4_Ixand0v_nNCxxRFwjcXR1XK31QJcCoV6VHTqYytv7NLBqTxvD8n7T6mKCS56GT8kWgKg8SPkhMgsELVwTWe6-zBmuY7KDc6J2S2X4FlBcvxfDDBkiJWOVoNAYKyECbqUL9BmHo1WNhrLYxa0i7GEt0tg9F_9V4kHKb5wziPhMlw7deySLFwxmsswKhYNXAjIeTJMPKYWZM9drY48I5fLn5hTDUA6r_WBvRkZKzDqA12WSIzqSlYST31W4hlSEsgX0bnBllgKqOsQIP829DKQ_4dAysjYDbuSw-h0Y7SGxOe50sCsPvYiq1Z3-3G1LkhjGHKS0HluBuV845AWzRHDt_O6dIqPqtjpQLLB_O8XaC05k07G2VOr400ghN3PpJJsFqhmaZOxPaSo-aCG_wYTRHhP7cUGYal4bBl2AGLIVkGKY8ja_cX2hHQ7Kg992PMJnomV2qg0njaZgfz9onr9TvugV0f8n3yYPq2d4m5pgM-KfPSopeHsredEyOPmyg9M-k1fN9wTnOr_Thw66qhs1eyaX_T7i8oKQMAAYoRX6HqXLYVl4_Neo1niqqshdw49lQkAMVZJ0RouxGLq8Jm4p3GBaiJYw3HvvGBMZxG6izxbg7gU0bmLp87Py7x9cp9qzX3ncFARgMi7BSoGbCfzdFmSfnTC9=w97-h53-no?authuser=0)](http://iot.lviv.ua)
+[![Prometheus Public Trello Board](https://d1vg9wkrun3t3k.cloudfront.net/users/0cd9b497-2ad6-47d7-bb97-d8714685ce5e/forever_files/648ba915-ee69-403a-b502-d9672eaf8f12/original.png?format=jpg&width=97&height=53&quality=85)](https://trello.com/b/qJgD7BVZ/prometheus-board) [![Internet Of Things Info Page](https://d1vg9wkrun3t3k.cloudfront.net/users/0cd9b497-2ad6-47d7-bb97-d8714685ce5e/forever_files/5160b2b2-53d7-4419-adbe-7350d9c63dca/original.png?format=jpg&width=97&height=53&quality=85)](http://iot.lviv.ua)
 ***
-# IONKiD
+# iONKiD
+current version: 1.5-SNAPSHOT | 05/25/20
 
 This repository is a part of education process in *IoT @ LP NU, 2019-2020*.
 
@@ -32,7 +33,12 @@ The website will allow a doctor to:
 ***
 # Built with
 
-IONKiD uses plenty of open source projects and libraries:
+IONKiD was developed using technologies like:
+- Java 11
+- HTML5/CSS3
+- JavaScript
+
+and plenty of frameworks and libraries:
 - [Maven] | Dependency Management
 - [Spring Boot] | Create Java Micro Sevice
 - [Spring Data JPA] | JPA-based repositories implementation
@@ -43,10 +49,10 @@ IONKiD uses plenty of open source projects and libraries:
 - [PostgreSQL] | Database provider
 - [Hibernate] | ORM for mapping a domain model to the database
 - [JAXB] | Mapping the Java class to XML representation
+- [Mustache] | Logic-less template system
 - [Bootstrap] | Front-End library for responsive web design
 - [jQuery] | JavaScript usage simplifier
 - [Turbolinks] | Speed up the page loading
-- [Mustache] | Logic-less template system
 - [JS-Cookie] | JavaScript API for handling browser cookies
 
 ***
@@ -87,3 +93,4 @@ No license so far, just a student project.
    [Turbolinks]: <https://github.com/turbolinks/turbolinks>
    [Mustache]: <https://mustache.github.io>
    [JS-Cookie]: <https://github.com/js-cookie/js-cookie>
+s

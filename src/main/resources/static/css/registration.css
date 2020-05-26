@@ -1,0 +1,98 @@
+body {
+    background: #eef8ff;
+    left: 150px;
+    top: 50px;
+}
+.titleH{
+    background-color:#1b262c;
+    display: inline;
+    padding-left:90px;
+    padding-right:20px;
+    font-family:"Helvetica";
+    color: #e3ecf2;
+    font-size: 3em;
+    width: 90%;
+}
+.title{
+    display: inline;
+    max-width:90%;
+    padding-left:10px;
+    padding-right:70%;
+    font-family:"Helvetica";
+    color: #1b262c;
+    font-size: 3em;
+}
+.parallax-container {
+    background-color: #eef8ff;
+    margin-left: calc(-50vw + 50%);
+    position: relative;
+    width: 120%;
+    margin-right: calc(50vw + 50%);
+    margin-top: 6%
+}
+.text1 {
+    margin-top: 3%;
+    margin-left: 0;
+    background-color: #eef8ff;
+    width: 100%;
+    box-sizing: content-box;
+    color: #2c373d;
+    margin-right: 0;
+}
+.registration-header {
+    color: #1b262c;
+    font-size: 20px;
+}
+.full-width {
+    width: 100vw;
+    margin-left: -50vw;
+    left: 50%;
+}
+.together {
+    display: inline;
+}
+.BTHP{
+    border-bottom: 1px solid #141E30;
+    color: rgba(255, 255, 255, 0.5);
+    padding-left:10px;
+    padding-right:30px;
+    padding-top:10px;
+    padding-bottom:10px;
+    width: 100%;
+}
+.form-control{
+    padding-left:14px;
+    padding-right:30px;
+    padding-top: 10px;
+    padding-bottom:11px;
+    width:25vw;
+
+}
+
+.a1{
+    padding-left: 400px;
+}
+ul li{
+    display: inline;
+}
+.together{
+    display: inline;
+}
+.title2{
+    text-align:center;
+}
+
+.left {
+    float: left
+}
+.right {
+    float: right
+}
+.container1 {
+    width: 100vw;
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    position: relative;
+    top: 550px;
+}

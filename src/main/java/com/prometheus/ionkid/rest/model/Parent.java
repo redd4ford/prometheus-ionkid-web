@@ -33,4 +33,5 @@ public class Parent extends User {
   public void setKids(Set<Kid> kids) {
     this.kids = kids;
   }
+
 }

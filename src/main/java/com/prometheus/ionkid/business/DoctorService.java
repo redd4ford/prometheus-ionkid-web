@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class DoctorService extends AbstractService<Doctor> {
+
   @Autowired
   private DoctorRepository doctorRepository;
 

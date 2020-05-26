@@ -2,10 +2,12 @@ package com.prometheus.ionkid.rest.dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Set;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CaptchaResponseDto {
+
   private boolean success;
 
   @JsonAlias("error-codes")
@@ -26,4 +28,5 @@ public class CaptchaResponseDto {
   public void setErrorCodes(Set<String> errorCodes) {
     this.errorCodes = errorCodes;
   }
+
 }

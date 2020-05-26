@@ -14,7 +14,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RequestMapping("/admins")
 @RestController
 public class AdminController {
+
   private AtomicInteger adminIdCounter = new AtomicInteger();
+
   @Autowired
   private AdminService adminService;
 

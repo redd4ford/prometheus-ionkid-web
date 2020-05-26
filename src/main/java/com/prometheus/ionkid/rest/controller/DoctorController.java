@@ -14,7 +14,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RequestMapping("/doctors")
 @RestController
 public class DoctorController {
+
   private AtomicInteger doctorIdCounter = new AtomicInteger();
+
   @Autowired
   private DoctorService doctorService;
 

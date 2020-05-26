@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity
 public class Doctor extends User {
+
   @Column
   private String certificationId;
 
@@ -72,4 +73,5 @@ public class Doctor extends User {
   public void setPrograms(List<Program> programs) {
     this.programs = programs;
   }
+
 }
