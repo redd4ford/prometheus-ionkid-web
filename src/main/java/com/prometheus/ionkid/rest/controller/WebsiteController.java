@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -62,8 +63,9 @@ public class WebsiteController {
   @GetMapping("userslist")
   public String userslist(Map<String, Object> model) {
     Iterable<User> users = userService.getAll();
+    int total= ((List<User>) users).size();
     model.put("users", users);
-
+    model.put("total", total);
     return "userslist";
   }
 
