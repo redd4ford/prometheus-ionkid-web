@@ -30,7 +30,7 @@
             <div class="dropdown-container">
                 <a href="#">Settings</a>
                 <a href="#">Update info</a>
-                <a onClick="logout()" href="#">Log out</a>
+                <a onClick="logout()">Log out</a>
 
             </div>
 
@@ -41,7 +41,7 @@
                     <a href="#">{{firstName}} {{lastName}}</a>
                 {{/users}}
             </div>
-            <button class="dropdown-btn" href="#">My messages</button>
+            <button class="dropdown-btn" onClick="window.location.href='#'">My messages</button>
 
             <button class="dropdown-btn">My programs<i class="fa fa-caret-down"></i>
             </button>
@@ -80,7 +80,7 @@
         {{#users}}
             <div class="data">
                 <p><b style="font-size: 24px">{{#firstName}} {{firstName}} {{/firstName}} {{^firstName}} NA {{/firstName}} {{#lastName}} {{lastName}} {{/lastName}} {{^lastName}} NA {{/lastName}}</b></p>
-                <p>Email:{{#email}} {{email}} {{/email}} {{^email}} NA {{/email}}</p>
+                <p>Email: {{#email}} {{email}} {{/email}} {{^email}} NA {{/email}}</p>
                 <p>Role: {{roles}}</p>
                 <p>Last visit: {{#lastVisit}} {{lastVisit}} {{/lastVisit}} {{^lastVisit}} NA {{/lastVisit}}</p>
                 <p>Id: {{id}}</p>
