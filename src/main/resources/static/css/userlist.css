@@ -8,6 +8,7 @@
     grid-area: menu;
     background-color: #e3ecf2;
     min-height: 44em !important;
+    font-size: 20px;
 
 }
 
@@ -20,6 +21,7 @@
     grid-area: text;
     background-color: #eef8ff;
     min-height: 44em !important;
+    font-size: 20px;
 }
 
 .grid-container {
@@ -77,6 +79,7 @@
     background-color: #e3ecf2;
     border: none;
     outline: none;
+    font-size: 20px;
 
 }
 
