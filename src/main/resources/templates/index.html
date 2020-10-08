@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>iONKiD | Home</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <base href="/" />
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css" />
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src='http://cdn.renderedfont.com/js/renderedfont-0.8.min.js#free'></script>
+    <script type="text/javascript" src='/static/js/xsrf.token.js'></script>
+    <script type="text/javascript" src='/static/js/smooth.scroll.js'></script>
+    <script type="text/javascript" src='/static/js/user.name.js'></script>
+    <script type="text/javascript" src='/static/js/logout.js'></script>
+</head>
+
+<body>
+<div class="container unauthenticated">
+    <a id="signin" href="/oauth2/authorization/google" class="btn btn-info btn-lg" role="button"><b>
+        <div style="color:white">SIGN IN (Google)</div>
+    </b></a>
+    <a id="login" href="/login" class="btn btn-info btn-lg" role="button">
+        <div style="color:white"><b>SIGN IN (IONKiD)</b></div>
+    </a>
+    <a id="signup" href="/registration?" class="btn btn-info btn-lg" role="button"><b>
+        <div style="color:white">SIGN UP<br></div>
+    </b></a>
+    <b id="experience" class="font-weight-bolder">YOUR EXPERIENCE</b>
+    <div class="matters font-weight-bolder">MATTERS</div>
+    <div class="providing"><b>providing a workplace for doctors<br>specializing in developmental disorders</b></div>
+    <div class="logo">
+    </div>
+    <p style="text-align:center;"><button onclick="scrollWin()" type="button" class="btn btn-outline-dark scroller">
+        <div style="font-size:20px; color:white">learn more ▼</div>
+    </button></p>
+    <div class="parallax-container full-width" id="main-content">
+        <div>
+            <br>
+            <h1><u style="margin-top:20px; background-color: #1b262c; padding-left: 15%; padding-right:20px; font-size:40px; color:white; border-radius: 5px;"><b>WHAT IS THIS?</b></u></h1>
+        </div>
+        <br>
+        <div class="exp">
+            <hr class="new5"> Nowadays there are not many therapists who specialize in children with special needs (Autism, Dawn syndrome, cerebral palsy etc.). <br><br> The conditions of their work are pretty terrible even if it is remote. <br><br> This enthusiastic student project is on a mission to become the most comfortable workspace ever for such specialists.
+            <hr class="new5">
+            <br>
+        </div>
+        <div>
+            <h1><u style="background-color: #1b262c; padding-left: 15%; padding-right:26px; font-size:40px; color:white;border-radius: 5px;"><b>WHY IONKID?</b></u></h1>
+        </div>
+        <br>
+        <div class="exp">
+            <hr class="new5">
+            <div style="font-weight: bolder; font-size:30px">FOCUS ON TREATMENT</div>
+            <p>No emojis. No ads. Keep it simple. Just you and your patients.</p>
+            <div style="font-weight: bolder; font-size:30px">BLURRING THE BORDERS</div>
+            <p>Not everybody speaks English, so we want to save your time wasted on Google Translate. Read and write both treatment programs and messages in any language you prefer.</p>
+            <div style="font-weight: bolder; font-size:30px">ALL IN ONE PLACE</div>
+            <p>Keep all your information on patients, treatment programs and to do lists in your workplace. Everything is secured.</p>
+            <hr class="new5">
+        </div>
+        <div class="buttons-get-started text-center">
+            <p style="text-align:center;"><button onclick="scrollBack()" type="button" class="button text-center"> GET STARTED </button></p>
+            <p style="text-align:center;"><a href="#">
+                <img src="https://lh3.googleusercontent.com/1hJj6Aw2k6cEyFu10xdj5riLo0wBGFKE5XnbGaymhgo1z8Tsr8EpfJr2jbQFRxDONvwk6lak-62F2Fx7-_jp-ykJKA=w1000" alt="HTML tutorial" style="width:210px;height:75px;">
+            </a></p>
+            <p style="text-align:center;"><a href="#">
+                <img src="data:image/png;base64,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" alt="HTML tutorial" style="width:210px;height:80px;">
+            </a></p>
+        </div>
+        <div class="container1 p-3 bg-dark text-white container-fluid">
+            <ul class="breadcrumb together" style="background-color: #353a40">
+                <li class="breadcrumb-item"> <a href="#" id="link"><b>ABOUT US</b></a></li>
+                <li class="breadcrumb-item"> <a href="#" id="link"><b>BLOGS</b></a></li>
+                <li class="breadcrumb-item"> <a href="#" id="link"><b>AFFILIATE PROGRAMS</b></a></li>
+                <li class="breadcrumb-item"> <a href="#" id="link"><b>SUPPORT</b></a></li>
+            </ul>
+            <ul class="together">
+                <li class="breadcrumb-item"><a class="a1" href="#" id="link"><b>TERMS OF USE </b></a></li>
+                <li class="breadcrumb-item"><a href="#" id="link"><b>PRIVACY POLICY </b></a></li>
+            </ul>
+            <br>
+            <br>
+            <br>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;Copyright © 2019-2020 | Prometheus, Lviv IoT. All rights reserved</p>
+        </div>
+    </div>
+</div>
+</div>
+<div class="container authenticated" style="display:none">
+    <div>
+        <div class="hello">Hello, <div class="name"><span class="authenticated" id="user"></span></div>!</div>
+    </div>
+    <div class="please">| Please, choose an option |</div>
+    <div class="container">
+        <pre id="choice1"><a href="\userslist" class="btn btn-light btn-lg" role="button" style="box-shadow: 0 0 3px 1px #070d0c;"><b> USERS </b></a>       <a href="\programslist" class="btn btn-light btn-lg" role="button" style="box-shadow: 0 0 3px 1px #070d0c;"><b>PROGRAMS</b></a></pre>
+    </div>
+    <div class="container">
+        <button onClick="logout()" class="btn btn-info btn-lg" id="logout"><b>LOG OUT</b></button>
+    </div>
+</div>
+</body>
+
+</html>
