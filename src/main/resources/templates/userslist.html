@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>User list</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/userlist.css"/>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src='/static/js/sidebar.dropdown.js'></script>
+    <script type="text/javascript" src='/static/js/xsrf.token.js'></script>
+    <script type="text/javascript" src='/static/js/user.name.js'></script>
+    <script type="text/javascript" src='/static/js/logout.js'></script>
+</head>
+
+<body>
+<div class="grid-container">
+    <div class="item1">
+        <div class="your-profile">YOUR PROFILE</div>
+    </div>
+    <div class="item2 ">
+        <div class="sidenav" style="padding-top: 10%;">
+            <button class="dropdown-btn">My account<i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="#">Settings</a>
+                <a href="#">Update info</a>
+                <a onClick="logout()">Log out</a>
+
+            </div>
+
+            <button class="dropdown-btn">My patients<i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <tr th:each="user : ${users}">
+                    &nbsp;&nbsp;
+                    <td th:text="${user.firstName}"></td>
+                    <td th:text="${user.lastName}"></td>
+                    <br>
+                </tr>
+            </div>
+            <button class="dropdown-btn" onClick="window.location.href='#'">My messages</button>
+
+            <button class="dropdown-btn">My programs<i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="#">Add new program..</a>
+                <a href="/programslist">Program list</a>
+
+                <tr th:each="program : ${programs}">
+                    <b>ID:</b></b><td th:text="${program.id}"></td>
+                    <br>
+                </tr>
+            </div>
+        </div>
+    </div>
+    <div class="item3">
+        <br>
+        <div style="text-align:center;">
+            <div style="font-size:24px">Total:
+                <td th:text="${#lists.size(users)}">users_number</td>
+            </div>
+            <br>
+
+            <tr th:each="user : ${users}">
+                <td><img th:src="@{${user.avatarUrl}}" title="ava" class="rounded-circle"
+                         style="width:200px;height:200px;"/></td>
+                <br>
+                <br>
+                <br>
+            </tr>
+
+            <br>
+        </div>
+    </div>
+    <div class="item4">
+        <br>
+        <br>
+        <br>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.firstName}" th:class=name></td>
+            <td th:text="${user.lastName}"></td>
+            <br>
+            <td th:text="${user.email}"></td>
+            <br>
+            <td th:text="${user.roles}"></td>
+            <br>
+            <td th:text="${user.lastVisit}"></td>
+            <br>
+            <td th:text="${user.id}"></td>
+            <br>
+            <button type="button" class="btn btn-outline-dark btn-lg">More info</button> &nbsp;&nbsp;
+            <button type="button" class="btn btn-dark btn-lg">Message</button>
+            <br>
+            <br>
+            <br>
+        </tr>
+        <br>
+
+    </div>
+</div>
+</div>
+
+</body>
+
+</html>
