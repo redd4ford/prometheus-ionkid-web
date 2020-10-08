@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>iONKiD TEST | Programs</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src='/static/js/xsrf.token.js'></script>
+    <script type="text/javascript" src='/static/js/logout.js'></script>
+</head>
+
+<body>
+<div>
+    <button onclick="window.location.href='/'" class="btn btn-info">IONKiD</button>   <a href="/userslist">USERS</a><br><br>
+    <button onClick="logout()" class="btn btn-primary">Logout</button>
+
+    <br><b>Programs List</b><br>
+
+    <br>
+    <tr th:each="program : ${programs}">
+        <b>ID:</b></b><td th:text="${program.id}"></td>
+        <br>
+        <b>Type:</b><td th:text="${program.description}"></td>
+        <br>
+        <b>Progress:</b><td th:text="${program.progress}"></td>
+        <br>
+        <b>StartDate:</b><td th:text="${program.enddate}"></td>
+        <br>
+        <br>
+
+    </tr>
+</div>
+</body>
+</html>
